@@ -1,0 +1,35 @@
+PODS:
+  - MSAL (1.2.5):
+    - MSAL/app-lib (= 1.2.5)
+  - MSAL/app-lib (1.2.5)
+  - MSGraphClientModels (1.3.0)
+  - MSGraphClientSDK (1.0.0):
+    - MSGraphClientSDK/Authentication (= 1.0.0)
+    - MSGraphClientSDK/Common (= 1.0.0)
+  - MSGraphClientSDK/Authentication (1.0.0)
+  - MSGraphClientSDK/Common (1.0.0):
+    - MSGraphClientSDK/Authentication
+  - SnapKit (5.6.0)
+
+DEPENDENCIES:
+  - MSAL
+  - MSGraphClientModels
+  - MSGraphClientSDK
+  - SnapKit (~> 5.6.0)
+
+SPEC REPOS:
+  trunk:
+    - MSAL
+    - MSGraphClientModels
+    - MSGraphClientSDK
+    - SnapKit
+
+SPEC CHECKSUMS:
+  MSAL: 5149daaa19228c2c27d81987634da15b50981cef
+  MSGraphClientModels: ffef6d0a1cdaa774e1689e38da35301cb74fc72a
+  MSGraphClientSDK: ffc07a58a838e0702c7bf2a856367035d4a335d7
+  SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
+
+PODFILE CHECKSUM: 3b932e4b29efcf152744b1adfef6cbd2fd560142
+
+COCOAPODS: 1.11.3
