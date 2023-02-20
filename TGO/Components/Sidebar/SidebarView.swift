@@ -68,7 +68,7 @@ import SwiftUI
 struct SidebarView_Preview: PreviewProvider {
     
     static var previews: some View {
-        var sidebarView: SidebarView = {
+        let sidebarView: SidebarView = {
             let presenter = SidebarViewPresenter()
             let sidebar = SidebarView(presenter: presenter)
             presenter.viewUI = sidebar

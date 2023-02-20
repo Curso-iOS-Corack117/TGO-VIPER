@@ -10,15 +10,20 @@ import SnapKit
 
 class MainView: UIViewController {
     
-    lazy var content: UIView = {
-        return UIView(frame: .zero)
-    }()
-    
     lazy var sidebar: SidebarView = {
         let presenter = SidebarViewPresenter()
         let sidebar = SidebarView(presenter: presenter)
         presenter.viewUI = sidebar
         return sidebar
+    }()
+    
+    lazy var bodyView: UIView = {
+        let content = UIView(frame: .zero)
+        return content
+    }()
+    
+    lazy var content: UIView = {
+        return UIView(frame: .zero)
     }()
 
     override func viewDidLoad() {
@@ -31,6 +36,7 @@ class MainView: UIViewController {
     private func setupView() {
         view.addSubview(content)
         content.addSubview(sidebar)
+        content.addSubview(bodyView)
         
         content.snp.makeConstraints { make in
             make.leading.trailing.bottom.equalToSuperview()
@@ -39,6 +45,41 @@ class MainView: UIViewController {
         
         sidebar.snp.makeConstraints { make in
             make.height.width.equalToSuperview()
+        }
+        
+        bodyView.snp.makeConstraints { make in
+            make.leading.equalTo(sidebar.getSidebarWidth())
+            make.trailing.equalToSuperview()
+            make.top.equalToSuperview()
+            make.bottom.equalToSuperview()
+        }
+        
+        updateMainView()
+    }
+    
+    private func updateMainView() {
+        var viewController = UIView(frame: .zero)
+        for v in bodyView.subviews {
+            v.removeFromSuperview()
+        }
+        
+        switch sidebar.presenter.viewType {
+            case .home:
+                viewController = HomeView(frame: .zero)
+            case .agenda:
+                viewController = HomeView(frame: .zero)
+            case .dashboard:
+                viewController = HomeView(frame: .zero)
+            case .visita_pdv:
+                viewController = HomeView(frame: .zero)
+            case .chat_zeus:
+                viewController = HomeView(frame: .zero)
+            case .ayuda:
+                viewController = HomeView(frame: .zero)
+        }
+        bodyView.addSubview(viewController)
+        viewController.snp.makeConstraints { make in
+            make.width.height.equalToSuperview()
         }
     }
 }

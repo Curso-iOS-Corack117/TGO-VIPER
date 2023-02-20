@@ -13,14 +13,14 @@ class SidebarButtonView: UIButton {
     var isSystemImage: Bool = false
     
     lazy var image: UIImage = {
-        let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFit
-        imageView.translatesAutoresizingMaskIntoConstraints = false
+        var image: UIImage?
         if isSystemImage {
-            return UIImage(systemName: imageName)!.withRenderingMode(.alwaysOriginal)
+            image = UIImage(systemName: imageName)
         } else {
-            return UIImage(named: imageName) ?? UIImage()
+            image = UIImage(named: imageName)
         }
+        image = image?.withTintColor(.white, renderingMode: .alwaysTemplate)
+        return image ?? UIImage()
     }()
     
     init(imageName: String = "", isSystemImage: Bool = false, action: @escaping () -> Void) {
@@ -36,20 +36,33 @@ class SidebarButtonView: UIButton {
     }
     
     func setupView() {
+        
+        imageView?.contentMode = .scaleAspectFit
+        imageView?.tintColor = .white
+        
+        imageView?.snp.makeConstraints { make in
+            make.width.height.equalToSuperview().multipliedBy(0.5)
+            make.center.equalToSuperview()
+        }
+        
 
         self.snp.makeConstraints { make in
             make.height.width.equalTo(40)
         }
         
         setImage(image, for: .normal)
-        backgroundColor = .orange
+        clipsToBounds = true
+        backgroundColor = UIColor(named: "red-elektra")
         layer.cornerRadius = 20
+        layer.shadowColor = UIColor.black.cgColor
+        layer.shadowOffset = CGSize(width: 0, height: 3)
+        layer.shadowOpacity = 0.5
+        layer.masksToBounds = false
         addTarget(self, action: #selector(actionButton), for: .touchUpInside)
     }
     
     @objc private func actionButton() {
         action()
-        print("hola")
     }
 }
 
@@ -61,11 +74,10 @@ struct SidebarButtonView_Preview: PreviewProvider {
     static var previews: some View {
         // view controller using programmatic UI
         SidebarButtonView(
-            imageName: "bell.badge",
-            isSystemImage: true,
+            imageName: "material-menu",
             action: {}
         ).showPreview()
-            .frame(width: 40, height: 40, alignment: .center)
+            .frame(minWidth: 40, maxWidth: 40, minHeight: 40, maxHeight: 40, alignment: .center)
             .ignoresSafeArea()
     }
 }

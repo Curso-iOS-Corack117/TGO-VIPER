@@ -103,14 +103,12 @@ class SidebarContentView: UIView {
             make.width.greaterThanOrEqualTo(40)
         }
         
-//        parentView.backgroundColor = UIColor(named: "white-gray")
-        parentView.backgroundColor = .blue
+        parentView.backgroundColor = UIColor(named: "white-gray")
         parentView.snp.makeConstraints { make in
             make.height.equalToSuperview()
             make.width.equalToSuperview()
             make.centerX.equalToSuperview()
         }
-        vstack.clipsToBounds = true
     }
 }
 

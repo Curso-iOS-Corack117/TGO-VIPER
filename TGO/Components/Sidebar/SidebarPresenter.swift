@@ -13,10 +13,19 @@ protocol SidebarViewUI: AnyObject {
 
 protocol SidebarViewPresentable: AnyObject {
     var viewUI: SidebarViewUI? { get }
+    var viewType: ViewTypes { get set }
+}
+
+enum ViewTypes {
+    case home
+    case agenda
+    case dashboard
+    case visita_pdv
+    case chat_zeus
+    case ayuda
 }
 
 class SidebarViewPresenter: SidebarViewPresentable {
     weak var viewUI: SidebarViewUI?
-    
-    
+    var viewType: ViewTypes = .home
 }
