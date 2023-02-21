@@ -18,6 +18,7 @@ class SidebarContentView: UIView {
                 }
             ),
             UIView(frame: .zero),
+            UIView(frame: .zero),
             SidebarButtonView(
                 imageName: "material-home",
                 action: {
@@ -30,18 +31,20 @@ class SidebarContentView: UIView {
 //                    self.manager.viewType = .agenda
                 }
             ),
-            SidebarButtonView(
-                imageName: "graph",
-                action: {
-//                    self.manager.viewType = .dashboard
-                }
-            ),
-            SidebarButtonView(
-                imageName: "metro-shop",
-                action: {
-//                    self.manager.viewType = .visita_pdv
-                }
-            ),
+//            SidebarButtonView(
+//                imageName: "graph",
+//                action: {
+////                    self.manager.viewType = .dashboard
+//                }
+//            ),
+//            SidebarButtonView(
+//                imageName: "metro-shop",
+//                action: {
+////                    self.manager.viewType = .visita_pdv
+//                }
+//            ),
+            UIView(frame: .zero),
+            UIView(frame: .zero),
             UIView(frame: .zero),
             UIView(frame: .zero),
             SidebarButtonView(
@@ -54,12 +57,12 @@ class SidebarContentView: UIView {
                     }
                 }
             ),
-            SidebarButtonView(
-                imageName: "charla",
-                action: {
-//                    self.manager.viewType = .chat_zeus
-                }
-            ),
+//            SidebarButtonView(
+//                imageName: "charla",
+//                action: {
+////                    self.manager.viewType = .chat_zeus
+//                }
+//            ),
             SidebarButtonView(
                 imageName: "open-question-mark",
                 action: {

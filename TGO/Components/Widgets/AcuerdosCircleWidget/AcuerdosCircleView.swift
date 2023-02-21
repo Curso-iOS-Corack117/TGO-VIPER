@@ -13,6 +13,7 @@ class AcuerdosCircleView: UIView {
         let title = UILabel()
         title.text = "Acuerdos"
         title.textAlignment = .center
+        title.textColor = .black
         title.font = .systemFont(ofSize: 24, weight: .medium)
         return title
     }()
@@ -62,6 +63,13 @@ struct AcuerdosCircleView_Preview: PreviewProvider {
         // view controller using programmatic UI
         AcuerdosCircleView(widgetSize: 150).showPreview()
             .ignoresSafeArea()
+            .frame(
+                minWidth: 150,
+                maxWidth: 150,
+                minHeight: 150,
+                maxHeight: 150,
+                alignment: .center
+            )
             .previewLayout(.fixed(width: 150, height: 150))
     }
 }

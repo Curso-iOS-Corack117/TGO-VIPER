@@ -22,6 +22,7 @@
 		B3421FC429A0BB0700951B6D /* SidebarPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3421FC329A0BB0700951B6D /* SidebarPresenter.swift */; };
 		B3421FC829A0BEB000951B6D /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3421FC729A0BEB000951B6D /* UIViewControllerExtension.swift */; };
 		B3421FCA29A0BED100951B6D /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3421FC929A0BED100951B6D /* UIViewExtension.swift */; };
+		B3D56C9029A3DC1800B97AAC /* ORCWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D56C8F29A3DC1800B97AAC /* ORCWidgetView.swift */; };
 		B3E6E67429A293F500313A48 /* AcuerdosCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E6E67329A293F500313A48 /* AcuerdosCircleView.swift */; };
 		B3E6E67729A338C500313A48 /* CircleProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E6E67629A338C500313A48 /* CircleProgressBarView.swift */; };
 /* End PBXBuildFile section */
@@ -46,6 +47,7 @@
 		B3421FC329A0BB0700951B6D /* SidebarPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarPresenter.swift; sourceTree = "<group>"; };
 		B3421FC729A0BEB000951B6D /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		B3421FC929A0BED100951B6D /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
+		B3D56C8F29A3DC1800B97AAC /* ORCWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ORCWidgetView.swift; sourceTree = "<group>"; };
 		B3E6E67329A293F500313A48 /* AcuerdosCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcuerdosCircleView.swift; sourceTree = "<group>"; };
 		B3E6E67629A338C500313A48 /* CircleProgressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleProgressBarView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -91,28 +93,14 @@
 			isa = PBXGroup;
 			children = (
 				B3E6E67029A2935200313A48 /* AcuerdosCircleWidget */,
-				B3E6E67229A293BD00313A48 /* CalendarWidget */,
-				B3E6E66F29A2934800313A48 /* GerenteResumeWidget */,
-				B3E6E66E29A2933E00313A48 /* HealthStatusWidget */,
-				B327676A29A292D100896F92 /* ORCWidget */,
-				B327676829A2928900896F92 /* PDVCardWidget */,
-				B3E6E67129A293AF00313A48 /* PDVStackWidget */,
+				B3D56C8829A3DBCC00B97AAC /* CalendarWidget */,
+				B3D56C8929A3DBD500B97AAC /* GerenteResumeWidget */,
+				B3D56C8A29A3DBE000B97AAC /* HealthStatusWidget */,
+				B3D56C8B29A3DBE600B97AAC /* ORCWidget */,
+				B3D56C8C29A3DBED00B97AAC /* PDVCardWidget */,
+				B3D56C8D29A3DBF400B97AAC /* PDVStackWidget */,
 			);
 			path = Widgets;
-			sourceTree = "<group>";
-		};
-		B327676829A2928900896F92 /* PDVCardWidget */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = PDVCardWidget;
-			sourceTree = "<group>";
-		};
-		B327676A29A292D100896F92 /* ORCWidget */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ORCWidget;
 			sourceTree = "<group>";
 		};
 		B33EE23429A1336C00869DAF /* Components */ = {
@@ -204,18 +192,47 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		B3E6E66E29A2933E00313A48 /* HealthStatusWidget */ = {
+		B3D56C8829A3DBCC00B97AAC /* CalendarWidget */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CalendarWidget;
+			sourceTree = "<group>";
+		};
+		B3D56C8929A3DBD500B97AAC /* GerenteResumeWidget */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = GerenteResumeWidget;
+			sourceTree = "<group>";
+		};
+		B3D56C8A29A3DBE000B97AAC /* HealthStatusWidget */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			path = HealthStatusWidget;
 			sourceTree = "<group>";
 		};
-		B3E6E66F29A2934800313A48 /* GerenteResumeWidget */ = {
+		B3D56C8B29A3DBE600B97AAC /* ORCWidget */ = {
+			isa = PBXGroup;
+			children = (
+				B3D56C8F29A3DC1800B97AAC /* ORCWidgetView.swift */,
+			);
+			path = ORCWidget;
+			sourceTree = "<group>";
+		};
+		B3D56C8C29A3DBED00B97AAC /* PDVCardWidget */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			path = GerenteResumeWidget;
+			path = PDVCardWidget;
+			sourceTree = "<group>";
+		};
+		B3D56C8D29A3DBF400B97AAC /* PDVStackWidget */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = PDVStackWidget;
 			sourceTree = "<group>";
 		};
 		B3E6E67029A2935200313A48 /* AcuerdosCircleWidget */ = {
@@ -225,21 +242,6 @@
 				B3E6E67329A293F500313A48 /* AcuerdosCircleView.swift */,
 			);
 			path = AcuerdosCircleWidget;
-			sourceTree = "<group>";
-		};
-		B3E6E67129A293AF00313A48 /* PDVStackWidget */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = PDVStackWidget;
-			sourceTree = "<group>";
-		};
-		B3E6E67229A293BD00313A48 /* CalendarWidget */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = CalendarWidget;
-			path = "CalendarWidgetç";
 			sourceTree = "<group>";
 		};
 		B3E6E67529A338A800313A48 /* Components */ = {
@@ -365,6 +367,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B33EE23D29A143D600869DAF /* SidebarButtonView.swift in Sources */,
+				B3D56C9029A3DC1800B97AAC /* ORCWidgetView.swift in Sources */,
 				B3421FAF29A0B26000951B6D /* MainView.swift in Sources */,
 				B3E6E67729A338C500313A48 /* CircleProgressBarView.swift in Sources */,
 				B33EE23829A1348800869DAF /* SidebarContentPresenter.swift in Sources */,

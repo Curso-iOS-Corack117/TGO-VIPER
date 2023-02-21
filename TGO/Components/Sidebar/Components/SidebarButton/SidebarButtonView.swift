@@ -45,7 +45,6 @@ class SidebarButtonView: UIButton {
             make.center.equalToSuperview()
         }
         
-
         self.snp.makeConstraints { make in
             make.height.width.equalTo(40)
         }

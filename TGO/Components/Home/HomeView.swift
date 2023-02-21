@@ -9,22 +9,6 @@ import UIKit
 
 class HomeView: UIView {
     
-    //    GeometryReader { geo in
-    //        HStack {
-    //            PDVWidgetView()
-    //                .frame(
-    //                    //                        originalmente era 0.7
-    //                    maxWidth: geo.size.width * 0.45
-    //                )
-    //            CalendarWidget()
-    //        }
-    //        .frame(maxWidth: .infinity, alignment: .leading)
-    //        .padding()
-    //    }
-    //    .frame(maxWidth: .infinity, maxHeight: .infinity)
-//    lazy var pdvWidgetView: UIView = PDVCard()
-//    lazy var calendarWidgetView: UIView = CalendarWidget()
-    
     lazy var hstack: UIStackView = {
         let stack = UIStackView(arrangedSubviews: [])
         stack.axis = .horizontal
@@ -43,20 +27,18 @@ class HomeView: UIView {
     
     private func setupView() {
         addSubview(hstack)
-        let a = AcuerdosCircleView(widgetSize: 150)
+        let a = ORCWidgetView(widgetSize: 100)
         addSubview(a)
         a.snp.makeConstraints { make in
             make.center.equalToSuperview()
-            make.height.width.equalTo(150)
+            make.height.equalTo(100)
+            make.width.equalTo(150)
         }
         
         hstack.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
         
-//        pdvWidgetView.snp.makeConstraints { make in
-//            make.width.equalToSuperview().multipliedBy(0.45)
-//        }
         backgroundColor = .blue
     }
 }

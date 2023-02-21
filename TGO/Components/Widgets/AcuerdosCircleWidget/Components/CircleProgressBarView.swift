@@ -44,6 +44,13 @@ class CircleProgressBarView: UIView {
         return progressLayer
     }()
     
+    lazy var percentage: UILabel = {
+        let label = UILabel(frame: .zero)
+        label.text = "85%"
+        label.textColor = .black
+        return label
+    }()
+    
     private var startPoint = CGFloat(-Double.pi / 2)
     private var endPoint = CGFloat(3 * Double.pi / 2)
     private let lineWidth: CGFloat
@@ -62,9 +69,14 @@ class CircleProgressBarView: UIView {
     }
     
     func setupView() {
+        addSubview(percentage)
         layer.addSublayer(circleLayer)
         layer.addSublayer(progressLayer)
         layer.position = CGPointMake(layer.bounds.midX, layer.bounds.midY)
+        
+        percentage.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+        }
         
         progressAnimation(duration: 1)
     }
@@ -74,7 +86,7 @@ class CircleProgressBarView: UIView {
         let circularProgressAnimation = CABasicAnimation(keyPath: "strokeEnd")
         // set the end time
         circularProgressAnimation.duration = duration
-        circularProgressAnimation.toValue = 1.0
+        circularProgressAnimation.toValue = 0.85
         circularProgressAnimation.fillMode = .forwards
         circularProgressAnimation.isRemovedOnCompletion = false
         progressLayer.add(circularProgressAnimation, forKey: "progressAnim")
@@ -92,6 +104,13 @@ struct CircleProgressBarView_Preview: PreviewProvider {
         // view controller using programmatic UI
         CircleProgressBarView(withSize: 150).showPreview()
             .ignoresSafeArea()
+            .frame(
+                minWidth: 150,
+                maxWidth: 150,
+                minHeight: 150,
+                maxHeight: 150,
+                alignment: .center
+            )
             .previewLayout(.fixed(width: 150, height: 150))
     }
 }
