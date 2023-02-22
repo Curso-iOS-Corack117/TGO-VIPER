@@ -140,6 +140,7 @@ internal class TableORC: UIView {
             segColumn
         ])
         stack.axis = .horizontal
+        stack.backgroundColor = .red
         return stack
     }()
     
@@ -162,7 +163,24 @@ internal class TableORC: UIView {
     }
     
     private func setupView() {
+        addSubview(hstack)
+        
         backgroundColor = .blue
+        
+        hstack.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+    }
+}
+
+internal class ColumnORC: UIView {
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("Error al inicializar la vista")
     }
 }
 

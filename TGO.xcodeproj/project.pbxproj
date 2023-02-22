@@ -93,7 +93,7 @@
 			isa = PBXGroup;
 			children = (
 				B3E6E67029A2935200313A48 /* AcuerdosCircleWidget */,
-				B3D56C8829A3DBCC00B97AAC /* CalendarWidget */,
+				B32F781929A5172C002B82A4 /* CalendarWidget */,
 				B3D56C8929A3DBD500B97AAC /* GerenteResumeWidget */,
 				B3D56C8A29A3DBE000B97AAC /* HealthStatusWidget */,
 				B3D56C8B29A3DBE600B97AAC /* ORCWidget */,
@@ -101,6 +101,13 @@
 				B3D56C8D29A3DBF400B97AAC /* PDVStackWidget */,
 			);
 			path = Widgets;
+			sourceTree = "<group>";
+		};
+		B32F781929A5172C002B82A4 /* CalendarWidget */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CalendarWidget;
 			sourceTree = "<group>";
 		};
 		B33EE23429A1336C00869DAF /* Components */ = {
@@ -190,13 +197,6 @@
 				B3421FC929A0BED100951B6D /* UIViewExtension.swift */,
 			);
 			path = Extensions;
-			sourceTree = "<group>";
-		};
-		B3D56C8829A3DBCC00B97AAC /* CalendarWidget */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = CalendarWidget;
 			sourceTree = "<group>";
 		};
 		B3D56C8929A3DBD500B97AAC /* GerenteResumeWidget */ = {
