@@ -35,6 +35,17 @@ class SidebarButtonView: UIButton {
         fatalError("Error al inicializar la vista")
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        layer.cornerRadius = bounds.size.width / 2
+        layer.shadowColor = UIColor.black.cgColor
+        layer.shadowOffset = CGSize(width: 0, height: 3)
+        layer.shadowRadius = 2
+        layer.shadowOpacity = 0.5
+        layer.masksToBounds = false
+    }
+    
     func setupView() {
         
         imageView?.contentMode = .scaleAspectFit
@@ -52,11 +63,6 @@ class SidebarButtonView: UIButton {
         setImage(image, for: .normal)
         clipsToBounds = true
         backgroundColor = UIColor(named: "red-elektra")
-        layer.cornerRadius = 20
-        layer.shadowColor = UIColor.black.cgColor
-        layer.shadowOffset = CGSize(width: 0, height: 3)
-        layer.shadowOpacity = 0.5
-        layer.masksToBounds = false
         addTarget(self, action: #selector(actionButton), for: .touchUpInside)
     }
     
@@ -73,10 +79,18 @@ struct SidebarButtonView_Preview: PreviewProvider {
     static var previews: some View {
         // view controller using programmatic UI
         SidebarButtonView(
-            imageName: "material-menu",
+            imageName: "bell.badge",
+            isSystemImage: true,
             action: {}
         ).showPreview()
-            .frame(minWidth: 40, maxWidth: 40, minHeight: 40, maxHeight: 40, alignment: .center)
+            .frame(
+                minWidth: 40,
+                maxWidth: 40,
+                minHeight: 40,
+                maxHeight: 40,
+                alignment: .center
+            )
+            .previewLayout(.fixed(width: 100, height: 100))
             .ignoresSafeArea()
     }
 }

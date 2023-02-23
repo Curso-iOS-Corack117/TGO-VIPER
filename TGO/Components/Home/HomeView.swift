@@ -27,19 +27,19 @@ class HomeView: UIView {
     
     private func setupView() {
         addSubview(hstack)
-        let a = ORCWidgetView(widgetSize: 100)
+        let a = PDVCardWidgetView(frame: .zero)
         addSubview(a)
         a.snp.makeConstraints { make in
             make.center.equalToSuperview()
-            make.height.equalTo(100)
-            make.width.equalTo(150)
+            make.width.equalToSuperview()
+            make.height.equalTo(150)
         }
         
         hstack.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
         
-        backgroundColor = .blue
+        backgroundColor = .white
     }
 }
 

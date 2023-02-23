@@ -11,7 +11,6 @@ class ORCWidgetView: UIView {
     
     lazy var content: UIView = {
         let content = UIView(frame: .zero)
-        content.layer.backgroundColor = UIColor.red.cgColor
         content.layer.shadowColor = UIColor.black.cgColor
         content.layer.shadowOpacity = 0.5
         content.layer.masksToBounds = false
@@ -78,6 +77,11 @@ class ORCWidgetView: UIView {
     private func setupView() {
         addSubview(content)
         
+        self.snp.makeConstraints { make in
+            make.width.equalTo(widgetWidth)
+            make.height.equalTo(widgetHeight)
+        }
+        
         content.snp.makeConstraints { make in
             make.verticalEdges.equalToSuperview().inset(5)
             make.horizontalEdges.equalToSuperview()
@@ -116,20 +120,20 @@ class ORCWidgetView: UIView {
 
 internal class TableORC: UIView {
     
-    lazy var expColumn: UIView = {
-        return UIView(frame: .zero)
+    lazy var expColumn: ColumnORC = {
+        return ColumnORC(title: "Exp.", value: "\(exp)", extra: "1")
     }()
     
-    lazy var negColumn: UIView = {
-        return UIView(frame: .zero)
+    lazy var negColumn: ColumnORC = {
+        return ColumnORC(title: "Neg.", value: "\(neg)", extra: "4")
     }()
     
-    lazy var totalColumn: UIView = {
-        return UIView(frame: .zero)
+    lazy var totalColumn: ColumnORC = {
+        return ColumnORC(title: "Total", value: "\(total)", extra: "1")
     }()
     
-    lazy var segColumn: UIView = {
-        return UIView(frame: .zero)
+    lazy var segColumn: ColumnORC = {
+        return ColumnORC(title: "Seg.", value: "\(seg)")
     }()
     
     lazy var hstack: UIStackView = {
@@ -140,7 +144,7 @@ internal class TableORC: UIView {
             segColumn
         ])
         stack.axis = .horizontal
-        stack.backgroundColor = .red
+        stack.distribution = .fillEqually
         return stack
     }()
     
@@ -165,22 +169,85 @@ internal class TableORC: UIView {
     private func setupView() {
         addSubview(hstack)
         
-        backgroundColor = .blue
-        
         hstack.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
+        
+        expColumn.backgroundColor = UIColor(named: "blue-table")
+        negColumn.backgroundColor = UIColor(named: "gray-table")
+        segColumn.backgroundColor = UIColor(named: "yellow-table")
     }
 }
 
 internal class ColumnORC: UIView {
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    lazy var titleLabel = element(value: title, isBold: true)
+    lazy var valueLabel = element(value: value)
+    lazy var extraLabel = element(value: extra)
+    
+    lazy var vstack: UIStackView = {
+        let vstack = UIStackView(arrangedSubviews: [
+            titleLabel,
+            valueLabel,
+            extraLabel
+        ])
+        vstack.axis = .vertical
+        vstack.distribution = .equalSpacing
+        vstack.spacing = 2
+        return vstack
+    }()
+    
+    private let title: String
+    private let value: String
+    private let extra: String
+    
+    init(title: String, value: String, extra: String = "") {
+        self.title = title
+        self.value = value
+        self.extra = extra
+        super.init(frame: .zero)
+        self.setupView()
     }
     
     required init?(coder: NSCoder) {
         fatalError("Error al inicializar la vista")
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        titleLabel.snp.makeConstraints { make in
+            make.height.equalTo(frame.height / 3)
+        }
+        
+        valueLabel.snp.makeConstraints { make in
+            make.height.equalTo(frame.height / 3)
+        }
+        
+        extraLabel.snp.makeConstraints { make in
+            make.height.equalTo(frame.height / 6)
+        }
+    }
+    
+    private func setupView() {
+        addSubview(vstack)
+        
+        vstack.snp.makeConstraints { make in
+            make.horizontalEdges.equalToSuperview().inset(6)
+        }
+        
+    }
+    
+    private func element(value: String, isBold: Bool = false) -> UILabel  {
+        let element = UILabel(frame: .zero)
+        element.text = value
+        element.textAlignment = .center
+        element.sizeToFit()
+        element.adjustsFontSizeToFitWidth = true
+        if isBold {
+            element.font = .boldSystemFont(ofSize: element.font.pointSize)
+        }
+        return element
     }
 }
 

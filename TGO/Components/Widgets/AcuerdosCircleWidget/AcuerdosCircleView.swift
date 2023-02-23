@@ -9,25 +9,37 @@ import UIKit
 
 class AcuerdosCircleView: UIView {
     
+    lazy var content: UIView = {
+        let content = UIView(frame: .zero)
+        return content
+    }()
+    
     lazy var title: UILabel = {
         let title = UILabel()
         title.text = "Acuerdos"
         title.textAlignment = .center
         title.textColor = .black
-        title.font = .systemFont(ofSize: 24, weight: .medium)
+        title.font = .systemFont(ofSize: 18, weight: .medium)
+        title.minimumScaleFactor = 0.5
+        title.adjustsFontSizeToFitWidth = true
         return title
     }()
     
     lazy var circleProgress: CircleProgressBarView = {
-        let progressBar = CircleProgressBarView(withSize: widgetSize)
+        let progressBar = CircleProgressBarView(
+            percentage: percentage,
+            withSize: widgetSize * 0.8
+        )
         return progressBar
     }()
     
+    let percentage: CGFloat
     let widgetSize: CGFloat
     
-    init(widgetSize: CGFloat) {
-        self.widgetSize = widgetSize * 0.75
-        super.init(frame: .init(origin: .zero, size: .init(width: widgetSize, height: widgetSize)))
+    init(percentage: CGFloat, widgetSize: CGFloat) {
+        self.percentage = percentage
+        self.widgetSize = widgetSize
+        super.init(frame: .zero)
         self.setupView()
     }
     
@@ -36,20 +48,29 @@ class AcuerdosCircleView: UIView {
     }
     
     func setupView() {
-        addSubview(title)
-        addSubview(circleProgress)
+        addSubview(content)
+        content.addSubview(title)
+        content.addSubview(circleProgress)
+        
+        self.snp.makeConstraints { make in
+            make.width.height.equalTo(widgetSize)
+        }
+        
+        content.snp.makeConstraints { make in
+            make.edges.equalToSuperview().inset(5)
+        }
         
         title.snp.makeConstraints { make in
             make.top.equalToSuperview()
             make.width.equalToSuperview()
             make.height.equalToSuperview().multipliedBy(0.2)
         }
+        
         circleProgress.snp.makeConstraints { make in
-            make.width.height.equalTo(widgetSize)
-            make.centerX.equalToSuperview()
+            make.top.equalTo(title.snp.bottom)
+            make.horizontalEdges.equalToSuperview()
             make.bottom.equalToSuperview()
         }
-        self.backgroundColor = .white
     }
 }
 
@@ -61,7 +82,7 @@ struct AcuerdosCircleView_Preview: PreviewProvider {
     
     static var previews: some View {
         // view controller using programmatic UI
-        AcuerdosCircleView(widgetSize: 150).showPreview()
+        AcuerdosCircleView(percentage: 85, widgetSize: 150).showPreview()
             .ignoresSafeArea()
             .frame(
                 minWidth: 150,
@@ -70,7 +91,7 @@ struct AcuerdosCircleView_Preview: PreviewProvider {
                 maxHeight: 150,
                 alignment: .center
             )
-            .previewLayout(.fixed(width: 150, height: 150))
+            .previewLayout(.fixed(width: 200, height: 200))
     }
 }
 #endif
