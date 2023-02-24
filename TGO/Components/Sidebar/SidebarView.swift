@@ -38,11 +38,11 @@ class SidebarView: UIView {
         
         sidebarContent.snp.makeConstraints { make in
             make.height.equalToSuperview()
-            make.width.equalTo(getSidebarWidth())
+            make.width.equalTo(presenter.sidebarWidth)
         }
     }
     
-    func getSidebarWidth() -> CGFloat {
+    static func getSidebarWidth() -> CGFloat {
         let devicePosition = UIDevice.current.orientation.isLandscape
         let widthScreen = UIScreen.main.bounds.size.width
         let percentage = devicePosition ? 0.06 : 0.07
@@ -52,11 +52,9 @@ class SidebarView: UIView {
 }
 
 extension SidebarView: SidebarViewUI {
-    func updateSidebarContraints() {
-        let sidebarWidth = getSidebarWidth()
-        
+    func updateView() {
         sidebarContent.snp.updateConstraints { make in
-            make.width.equalTo(sidebarWidth)
+            make.width.equalTo(presenter.sidebarWidth)
         }
     }
 }

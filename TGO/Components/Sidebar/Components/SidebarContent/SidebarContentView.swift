@@ -108,9 +108,7 @@ class SidebarContentView: UIView {
         
         parentView.backgroundColor = UIColor(named: "white-gray")
         parentView.snp.makeConstraints { make in
-            make.height.equalToSuperview()
-            make.width.equalToSuperview()
-            make.centerX.equalToSuperview()
+            make.edges.equalToSuperview()
         }
     }
 }

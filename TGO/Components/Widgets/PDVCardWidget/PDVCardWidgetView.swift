@@ -31,6 +31,8 @@ class PDVCardWidgetView: UIView {
         stack.spacing = 10
         return stack
     }()
+    
+    private var firstTime = true
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -51,11 +53,14 @@ class PDVCardWidgetView: UIView {
         layer.shadowRadius = 3
         layer.cornerRadius = 5
         
-        scrollContent.addArrangedSubview(ORCWidgetView(widgetSize: content.frame.height))
-        scrollContent.addArrangedSubview(AcuerdosCircleView(
-            percentage: 85,
-            widgetSize: content.frame.height
-        ))
+        if firstTime {
+            scrollContent.addArrangedSubview(ORCWidgetView(widgetSize: content.frame.height))
+            scrollContent.addArrangedSubview(AcuerdosCircleView(
+                percentage: 85,
+                widgetSize: content.frame.height
+            ))
+            firstTime = false
+        }
         scrollView.contentInset = .init(top: 0, left: 0, bottom: 0, right: 50)
         scrollView.showsHorizontalScrollIndicator = false
         scrollView.clipsToBounds = false

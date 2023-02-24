@@ -33,10 +33,15 @@ class MainView: UIViewController {
         self.setupView()
     }
     
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        sidebar.presenter.sidebarWidth = SidebarView.getSidebarWidth()
+        updateView()
+    }
+    
     private func setupView() {
         view.addSubview(content)
-        content.addSubview(sidebar)
         content.addSubview(bodyView)
+        content.addSubview(sidebar)
         
         content.snp.makeConstraints { make in
             make.leading.trailing.bottom.equalToSuperview()
@@ -48,13 +53,19 @@ class MainView: UIViewController {
         }
         
         bodyView.snp.makeConstraints { make in
-            make.leading.equalTo(sidebar.getSidebarWidth())
+            make.leading.equalTo(SidebarView.getSidebarWidth())
             make.trailing.equalToSuperview()
             make.top.equalToSuperview()
             make.bottom.equalToSuperview()
         }
         
         updateMainView()
+    }
+    
+    private func updateView() {
+        bodyView.snp.updateConstraints { make in
+            make.leading.equalTo(sidebar.presenter.sidebarWidth)
+        }
     }
     
     private func updateMainView() {

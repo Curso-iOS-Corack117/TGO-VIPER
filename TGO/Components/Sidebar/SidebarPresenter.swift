@@ -8,12 +8,13 @@
 import Foundation
 
 protocol SidebarViewUI: AnyObject {
-    func updateSidebarContraints() -> Void
+    func updateView() -> Void
 }
 
 protocol SidebarViewPresentable: AnyObject {
     var viewUI: SidebarViewUI? { get }
     var viewType: ViewTypes { get set }
+    var sidebarWidth: CGFloat { get set }
 }
 
 enum ViewTypes {
@@ -28,4 +29,15 @@ enum ViewTypes {
 class SidebarViewPresenter: SidebarViewPresentable {
     weak var viewUI: SidebarViewUI?
     var viewType: ViewTypes = .home
+    var sidebarWidth: CGFloat {
+        didSet {
+            if let view = viewUI {
+                view.updateView()
+            }
+        }
+    }
+    
+    init() {
+        self.sidebarWidth = SidebarView.getSidebarWidth()
+    }
 }
