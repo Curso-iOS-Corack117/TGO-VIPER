@@ -17,7 +17,7 @@ protocol SidebarViewPresentable: AnyObject {
     var sidebarWidth: CGFloat { get set }
 }
 
-enum ViewTypes {
+internal enum ViewTypes {
     case home
     case agenda
     case dashboard

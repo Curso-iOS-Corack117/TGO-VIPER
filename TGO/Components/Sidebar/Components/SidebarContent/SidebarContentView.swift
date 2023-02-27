@@ -82,10 +82,10 @@ class SidebarContentView: UIView {
         return vstack
     }()
     
-    lazy var parentView: UIView = {
-        let parentView = UIView(frame: .zero)
-        parentView.addSubview(vstack)
-        return parentView
+    lazy var container: UIView = {
+        let container = UIView(frame: .zero)
+        container.addSubview(vstack)
+        return container
     }()
     
     override init(frame: CGRect) {
@@ -98,7 +98,7 @@ class SidebarContentView: UIView {
     }
 
     private func setupView() {
-        addSubview(parentView)
+        addSubview(container)
         
         vstack.snp.makeConstraints { make in
             make.top.bottom.equalToSuperview().inset(40)
@@ -106,8 +106,8 @@ class SidebarContentView: UIView {
             make.width.greaterThanOrEqualTo(40)
         }
         
-        parentView.backgroundColor = UIColor(named: "white-gray")
-        parentView.snp.makeConstraints { make in
+        container.backgroundColor = UIColor(named: "white-gray")
+        container.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
     }
