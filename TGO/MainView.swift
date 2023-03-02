@@ -49,7 +49,8 @@ class MainView: UIViewController {
         }
         
         sidebar.snp.makeConstraints { make in
-            make.height.width.equalToSuperview()
+            make.width.equalTo(SidebarView.getSidebarWidth())
+            make.height.equalToSuperview()
         }
         
         bodyView.snp.makeConstraints { make in

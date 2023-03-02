@@ -100,15 +100,15 @@ class SidebarContentView: UIView {
     private func setupView() {
         addSubview(container)
         
+        container.backgroundColor = UIColor(named: "white-gray")
+        container.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+        
         vstack.snp.makeConstraints { make in
             make.top.bottom.equalToSuperview().inset(40)
             make.horizontalEdges.equalToSuperview()
             make.width.greaterThanOrEqualTo(40)
-        }
-        
-        container.backgroundColor = UIColor(named: "white-gray")
-        container.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
         }
     }
 }

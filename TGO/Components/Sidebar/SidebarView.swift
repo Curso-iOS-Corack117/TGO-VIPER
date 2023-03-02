@@ -40,6 +40,11 @@ class SidebarView: UIView {
             make.height.equalToSuperview()
             make.width.equalTo(presenter.sidebarWidth)
         }
+        
+        sidebarContent.layer.shadowOffset = CGSize(width: 0, height: 5)
+        sidebarContent.layer.shadowRadius = 10
+        sidebarContent.layer.shadowOpacity = 0.5
+        sidebarContent.layer.masksToBounds = false
     }
     
     static func getSidebarWidth() -> CGFloat {

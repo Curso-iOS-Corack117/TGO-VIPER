@@ -9,10 +9,9 @@ import UIKit
 
 class HomeView: UIView {
     
-    lazy var hstack: UIStackView = {
-        let stack = UIStackView(arrangedSubviews: [])
-        stack.axis = .horizontal
-        return stack
+    lazy var pdvStackWidget: PDVStackWidget = {
+        let pdvWidget = PDVStackWidget(frame: .zero)
+        return pdvWidget
     }()
     
     override init(frame: CGRect) {
@@ -26,17 +25,11 @@ class HomeView: UIView {
     
     
     private func setupView() {
-        addSubview(hstack)
-        let a = PDVCardWidgetView(frame: .zero)
-        addSubview(a)
-        a.snp.makeConstraints { make in
-            make.center.equalToSuperview()
-            make.width.equalToSuperview()
-            make.height.equalTo(150)
-        }
+        addSubview(pdvStackWidget)
         
-        hstack.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+        pdvStackWidget.snp.makeConstraints { make in
+            make.verticalEdges.equalToSuperview()
+            make.width.equalToSuperview().multipliedBy(0.5)
         }
         
         backgroundColor = .white

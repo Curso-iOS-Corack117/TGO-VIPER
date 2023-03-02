@@ -33,9 +33,11 @@ class PDVCardWidgetView: UIView {
     }()
     
     private var firstTime = true
-
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    private var widgetSize: CGFloat
+    
+    init(widgetSize: CGFloat) {
+        self.widgetSize = widgetSize
+        super.init(frame: .zero)
         self.setupView()
     }
     
@@ -51,9 +53,10 @@ class PDVCardWidgetView: UIView {
         layer.masksToBounds = false
         layer.shadowOffset = CGSize(width: 0, height: 0)
         layer.shadowRadius = 3
-        layer.cornerRadius = 5
+        layer.cornerRadius = 10
         
         if firstTime {
+            scrollContent.addArrangedSubview(GerenteResumeWidgetView(widgetSize: content.frame.height))
             scrollContent.addArrangedSubview(ORCWidgetView(widgetSize: content.frame.height))
             scrollContent.addArrangedSubview(AcuerdosCircleView(
                 percentage: 85,
@@ -63,7 +66,7 @@ class PDVCardWidgetView: UIView {
         }
         scrollView.contentInset = .init(top: 0, left: 0, bottom: 0, right: 50)
         scrollView.showsHorizontalScrollIndicator = false
-        scrollView.clipsToBounds = false
+        scrollView.clipsToBounds = true
     }
     
     func setupView() {
@@ -72,8 +75,14 @@ class PDVCardWidgetView: UIView {
         scrollView.addSubview(scrollContent)
         content.addSubview(addButton)
         
-        backgroundColor = UIColor(named: "white-gray")
+        backgroundColor = .white
+        addInteraction(UIDragInteraction(delegate: self))
         
+//        Constrainsts
+        self.snp.makeConstraints { make in
+            make.width.equalTo(widgetSize)
+            make.height.equalTo(170)
+        }
         
         content.snp.makeConstraints { make in
             make.edges.equalToSuperview().inset(10)
@@ -95,6 +104,29 @@ class PDVCardWidgetView: UIView {
             make.height.equalToSuperview()
         }
     }
+}
+
+//Se conforma protocolo UIDragInteractionDelegate
+extension PDVCardWidgetView: UIDragInteractionDelegate {
+    
+    func dragInteraction(_ interaction: UIDragInteraction, sessionWillBegin session: UIDragSession) {
+        print("start")
+    }
+    
+    func dragInteraction(_ interaction: UIDragInteraction, itemsForBeginning session: UIDragSession) -> [UIDragItem] {
+        let view = interaction.view as! Self
+        let provider = NSItemProvider(object: <#T##NSItemProviderWriting#>)
+        
+        if let imageView = interaction.view as? UIImageView{
+            guard let image = imageView.image else {return []}
+            let provider = NSItemProvider(object: image)
+            let item = UIDragItem.init(itemProvider: provider)
+            return[item]
+        }
+        return []
+    }
+    
+    
 }
 
 internal class AddButtonView: UIButton {
@@ -125,7 +157,7 @@ internal class AddButtonView: UIButton {
         setImage(image, for: .normal)
         clipsToBounds = true
         backgroundColor = UIColor(named: "red-elektra")
-//        addTarget(self, action: #selector(actionButton), for: .touchUpInside)
+//        addTarget(self, action: #selector(nil), for: .touchUpInside)
     }
 }
 
@@ -137,11 +169,11 @@ struct PDVCardWidgetView_Preview: PreviewProvider {
     
     static var previews: some View {
         // view controller using programmatic UI
-        PDVCardWidgetView().showPreview()
+        PDVCardWidgetView(widgetSize: 600).showPreview()
             .ignoresSafeArea()
             .frame(
-                minHeight: 150,
-                maxHeight: 150,
+                minHeight: 170,
+                maxHeight: 170,
                 alignment: .center
             )
             .previewLayout(.fixed(width: 600, height: 200))
