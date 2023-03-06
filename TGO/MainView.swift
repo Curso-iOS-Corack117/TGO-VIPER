@@ -70,29 +70,32 @@ class MainView: UIViewController {
     }
     
     private func updateMainView() {
-        var uiView = UIView(frame: .zero)
-        for view in bodyView.subviews {
-            view.removeFromSuperview()
-        }
+        var vc = UIViewController()
+        self.children.forEach({
+            $0.view.removeFromSuperview();
+            $0.removeFromParent()
+        })
         
         switch sidebar.presenter.viewType {
             case .home:
-            uiView = HomeView(frame: .zero)
+            vc = HomeView()
             case .agenda:
-            uiView = HomeView(frame: .zero)
+            vc = HomeView()
             case .dashboard:
-            uiView = HomeView(frame: .zero)
+            vc = HomeView()
             case .visita_pdv:
-            uiView = HomeView(frame: .zero)
+            vc = HomeView()
             case .chat_zeus:
-            uiView = HomeView(frame: .zero)
+            vc = HomeView()
             case .ayuda:
-            uiView = HomeView(frame: .zero)
+            vc = HomeView()
         }
-        bodyView.addSubview(uiView)
-        uiView.snp.makeConstraints { make in
+        addChild(vc)
+        bodyView.addSubview(vc.view)
+        vc.view.snp.makeConstraints { make in
             make.width.height.equalToSuperview()
         }
+        vc.didMove(toParent: self)
     }
 }
 

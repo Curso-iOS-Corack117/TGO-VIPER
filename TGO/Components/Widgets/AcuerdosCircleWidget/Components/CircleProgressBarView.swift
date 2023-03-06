@@ -29,7 +29,7 @@ class CircleProgressBarView: UIView {
         circleLayer.lineCap = .round
         circleLayer.lineWidth = lineWidth
         circleLayer.strokeEnd = 1.0
-        circleLayer.strokeColor = UIColor.gray.cgColor
+        circleLayer.strokeColor = UIColor.white.cgColor
         return circleLayer
     }()
     

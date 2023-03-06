@@ -19,6 +19,11 @@ class PDVCardWidgetView: UIView {
         return addButton
     }()
     
+    lazy var expandButton: ExpandButtonView = {
+        let expandButton = ExpandButtonView(frame: .zero)
+        return expandButton
+    }()
+    
     lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView(frame: .zero)
         return scrollView
@@ -34,6 +39,9 @@ class PDVCardWidgetView: UIView {
     
     private var firstTime = true
     private var widgetSize: CGFloat
+    
+    var presenter: PDVCardWidgetPresenter? = nil
+    var stackWidgetDelegate: PDVStackWidgetPresenter? = nil
     
     init(widgetSize: CGFloat) {
         self.widgetSize = widgetSize
@@ -74,6 +82,7 @@ class PDVCardWidgetView: UIView {
         content.addSubview(scrollView)
         scrollView.addSubview(scrollContent)
         content.addSubview(addButton)
+        content.addSubview(expandButton)
         
         backgroundColor = .white
         addInteraction(UIDragInteraction(delegate: self))
@@ -95,6 +104,13 @@ class PDVCardWidgetView: UIView {
             make.height.width.equalTo(width).multipliedBy(0.2)
         }
         
+        expandButton.snp.makeConstraints { make in
+            let width = self.snp.height
+            
+            make.top.trailing.equalToSuperview()
+            make.height.width.equalTo(width).multipliedBy(0.2)
+        }
+        
         scrollView.snp.makeConstraints { make in
             make.height.width.equalToSuperview()
         }
@@ -103,6 +119,13 @@ class PDVCardWidgetView: UIView {
             make.horizontalEdges.equalToSuperview()
             make.height.equalToSuperview()
         }
+    }
+}
+
+//Se conforma protocolo PDVCardWidgetViewUI
+extension PDVCardWidgetView: PDVCardWidgetViewUI {
+    func updateView() {
+        
     }
 }
 
@@ -115,20 +138,21 @@ extension PDVCardWidgetView: UIDragInteractionDelegate {
     
     func dragInteraction(_ interaction: UIDragInteraction, itemsForBeginning session: UIDragSession) -> [UIDragItem] {
         let view = interaction.view as! Self
-        let provider = NSItemProvider(object: <#T##NSItemProviderWriting#>)
-        
-        if let imageView = interaction.view as? UIImageView{
-            guard let image = imageView.image else {return []}
-            let provider = NSItemProvider(object: image)
-            let item = UIDragItem.init(itemProvider: provider)
-            return[item]
+        if let id = view.presenter?.id {
+            let provider = NSItemProvider(contentsOf: URL(string: "\(id)"))!
+            let item = UIDragItem(itemProvider: provider)
+            return [item]
         }
+        
         return []
     }
-    
+}
+
+extension PDVCardWidgetView: UIDropInteractionDelegate {
     
 }
 
+//Vista perteneciente al botón de acciones
 internal class AddButtonView: UIButton {
     
     override init(frame: CGRect) {
@@ -158,6 +182,47 @@ internal class AddButtonView: UIButton {
         clipsToBounds = true
         backgroundColor = UIColor(named: "red-elektra")
 //        addTarget(self, action: #selector(nil), for: .touchUpInside)
+    }
+}
+
+//Vista perteneciente al botón de expansión
+internal class ExpandButtonView: UIButton {
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        self.setupView()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("Error al inicializar la vista")
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        layer.cornerRadius = bounds.size.height /  4
+        layer.shadowColor = UIColor.black.cgColor
+        layer.shadowOffset = CGSize(width: 0, height: 0)
+        layer.shadowRadius = 2
+        layer.shadowOpacity = 0.5
+        layer.masksToBounds = false
+    }
+    
+    private func setupView() {
+        var image = UIImage(systemName: "arrow.up.left.and.arrow.down.right")
+        image = UIImage(cgImage: (image?.cgImage)!, scale: 1, orientation: .left)
+        imageView?.tintColor = .black
+        imageView?.layer.masksToBounds = false
+//        imageView?.layer.transform = CATransform3DMakeRotation(CGFloat.pi / 2, 0, 0, 1)
+        
+        imageView?.snp.makeConstraints { make in
+            make.width.height.equalToSuperview().multipliedBy(0.5)
+            make.center.equalToSuperview()
+        }
+        
+        setImage(image, for: .normal)
+        clipsToBounds = true
+        backgroundColor = .white
+        //        addTarget(self, action: #selector(nil), for: .touchUpInside)
     }
 }
 

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class PDVStackWidget: UIView {
+class PDVStackWidgetView: UIView {
     
     lazy var vstack: UIStackView = {
         let stack = UIStackView(frame: .zero)
@@ -28,6 +28,8 @@ class PDVStackWidget: UIView {
     
     private var firstTime = true
     
+    var presenter: PDVStackWidgetPresenter? = nil
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.setupView()
@@ -42,6 +44,8 @@ class PDVStackWidget: UIView {
         super.layoutSubviews()
         if firstTime {
             let pdvWidget = PDVCardWidgetView(widgetSize: frame.width - 30)
+            pdvWidget.presenter = PDVCardWidgetPresenter(viewUI: pdvWidget, id: 0)
+            pdvWidget.stackWidgetDelegate = presenter
             vstack.addArrangedSubview(pdvWidget)
             firstTime = false
         }
@@ -63,6 +67,12 @@ class PDVStackWidget: UIView {
     }
 }
 
+extension PDVStackWidgetView: PDVStackWidgetViewUI {
+    func updatePDV() {
+        
+    }
+}
+
 #if DEBUG
 import SwiftUI
 
@@ -71,7 +81,7 @@ struct PDVStackWidget_Preview: PreviewProvider {
     
     static var previews: some View {
         // view controller using programmatic UI
-        PDVStackWidget().showPreview()
+        PDVStackWidgetView().showPreview()
             .ignoresSafeArea()
             .previewLayout(.fixed(width: 800, height: 1200))
     }

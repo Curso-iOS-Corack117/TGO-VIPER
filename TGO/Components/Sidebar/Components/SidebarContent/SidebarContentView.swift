@@ -96,11 +96,29 @@ class SidebarContentView: UIView {
     required init?(coder: NSCoder) {
         fatalError("Error al inicializar la vista")
     }
+    
+    override func layoutSublayers(of layer: CALayer) {
+        super.layoutSublayers(of: layer)
+        
+        let radius = frame.width / 3
+        let path = UIBezierPath(
+            roundedRect: bounds,
+            byRoundingCorners: [.topRight, .bottomRight],
+            cornerRadii: CGSize(width: radius, height: radius)
+        )
+        
+        let shapeLayer = CAShapeLayer()
+        shapeLayer.path = path.cgPath
+        shapeLayer.fillColor = UIColor(named: "white-gray")!.cgColor
+        shapeLayer.masksToBounds = false
+        
+        layer.insertSublayer(shapeLayer, at: 0)
+    }
 
     private func setupView() {
         addSubview(container)
         
-        container.backgroundColor = UIColor(named: "white-gray")
+        container.backgroundColor = .clear
         container.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
@@ -110,6 +128,11 @@ class SidebarContentView: UIView {
             make.horizontalEdges.equalToSuperview()
             make.width.greaterThanOrEqualTo(40)
         }
+        
+        layer.shadowOffset = CGSize(width: 0, height: 5)
+        layer.shadowRadius = 5
+        layer.shadowOpacity = 0.5
+        layer.masksToBounds = false
     }
 }
 

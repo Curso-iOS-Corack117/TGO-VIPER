@@ -7,32 +7,27 @@
 
 import UIKit
 
-class HomeView: UIView {
+class HomeView: UIViewController {
     
-    lazy var pdvStackWidget: PDVStackWidget = {
-        let pdvWidget = PDVStackWidget(frame: .zero)
+    lazy var pdvStackWidget: PDVStackWidgetView = {
+        let pdvWidget = PDVStackWidgetView(frame: .zero)
         return pdvWidget
     }()
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setupView()
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.setupView()
     }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
     
     private func setupView() {
-        addSubview(pdvStackWidget)
+        view.addSubview(pdvStackWidget)
         
         pdvStackWidget.snp.makeConstraints { make in
             make.verticalEdges.equalToSuperview()
             make.width.equalToSuperview().multipliedBy(0.5)
         }
         
-        backgroundColor = .white
+        view.backgroundColor = .white
     }
 }
 

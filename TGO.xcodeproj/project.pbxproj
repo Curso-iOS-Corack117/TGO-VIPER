@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		B25E9DC08E0EDE7564672F88 /* Pods_TGO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83133BB87AC90915AF714D3B /* Pods_TGO.framework */; };
+		B3105EC529B0F3E1006D68B4 /* PDVCardWidgetPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3105EC429B0F3E1006D68B4 /* PDVCardWidgetPresenter.swift */; };
+		B3105EC729B0FD96006D68B4 /* PDVStackWidgetPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3105EC629B0FD96006D68B4 /* PDVStackWidgetPresenter.swift */; };
 		B327676129A18E9B00896F92 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B327676029A18E9B00896F92 /* Assets.xcassets */; };
 		B327676429A2083500896F92 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B327676329A2083500896F92 /* HomeView.swift */; };
 		B33EE23629A1339A00869DAF /* SidebarContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33EE23529A1339A00869DAF /* SidebarContentView.swift */; };
@@ -26,7 +28,7 @@
 		B3D56C9229A69BFD00B97AAC /* PDVCardWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D56C9129A69BFD00B97AAC /* PDVCardWidgetView.swift */; };
 		B3E6E67429A293F500313A48 /* AcuerdosCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E6E67329A293F500313A48 /* AcuerdosCircleView.swift */; };
 		B3E6E67729A338C500313A48 /* CircleProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E6E67629A338C500313A48 /* CircleProgressBarView.swift */; };
-		B3F21BD729AD1C4B00F4F4CB /* PDVStackWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F21BD629AD1C4B00F4F4CB /* PDVStackWidget.swift */; };
+		B3F21BD729AD1C4B00F4F4CB /* PDVStackWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F21BD629AD1C4B00F4F4CB /* PDVStackWidgetView.swift */; };
 		B3F21BD929AD1CB900F4F4CB /* GerenteResumeWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F21BD829AD1CB900F4F4CB /* GerenteResumeWidgetView.swift */; };
 /* End PBXBuildFile section */
 
@@ -34,6 +36,8 @@
 		3485E28F33FD8C01B2A01481 /* Pods-TGO.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TGO.release.xcconfig"; path = "Target Support Files/Pods-TGO/Pods-TGO.release.xcconfig"; sourceTree = "<group>"; };
 		76BB58BA9DC7BCC4C8C331BB /* Pods-TGO.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TGO.debug.xcconfig"; path = "Target Support Files/Pods-TGO/Pods-TGO.debug.xcconfig"; sourceTree = "<group>"; };
 		83133BB87AC90915AF714D3B /* Pods_TGO.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TGO.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B3105EC429B0F3E1006D68B4 /* PDVCardWidgetPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDVCardWidgetPresenter.swift; sourceTree = "<group>"; };
+		B3105EC629B0FD96006D68B4 /* PDVStackWidgetPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDVStackWidgetPresenter.swift; sourceTree = "<group>"; };
 		B327676029A18E9B00896F92 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B327676329A2083500896F92 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		B33EE23529A1339A00869DAF /* SidebarContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarContentView.swift; sourceTree = "<group>"; };
@@ -54,7 +58,7 @@
 		B3D56C9129A69BFD00B97AAC /* PDVCardWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDVCardWidgetView.swift; sourceTree = "<group>"; };
 		B3E6E67329A293F500313A48 /* AcuerdosCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcuerdosCircleView.swift; sourceTree = "<group>"; };
 		B3E6E67629A338C500313A48 /* CircleProgressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleProgressBarView.swift; sourceTree = "<group>"; };
-		B3F21BD629AD1C4B00F4F4CB /* PDVStackWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDVStackWidget.swift; sourceTree = "<group>"; };
+		B3F21BD629AD1C4B00F4F4CB /* PDVStackWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDVStackWidgetView.swift; sourceTree = "<group>"; };
 		B3F21BD829AD1CB900F4F4CB /* GerenteResumeWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GerenteResumeWidgetView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -232,6 +236,7 @@
 			isa = PBXGroup;
 			children = (
 				B3D56C9129A69BFD00B97AAC /* PDVCardWidgetView.swift */,
+				B3105EC429B0F3E1006D68B4 /* PDVCardWidgetPresenter.swift */,
 			);
 			path = PDVCardWidget;
 			sourceTree = "<group>";
@@ -239,7 +244,8 @@
 		B3D56C8D29A3DBF400B97AAC /* PDVStackWidget */ = {
 			isa = PBXGroup;
 			children = (
-				B3F21BD629AD1C4B00F4F4CB /* PDVStackWidget.swift */,
+				B3F21BD629AD1C4B00F4F4CB /* PDVStackWidgetView.swift */,
+				B3105EC629B0FD96006D68B4 /* PDVStackWidgetPresenter.swift */,
 			);
 			path = PDVStackWidget;
 			sourceTree = "<group>";
@@ -376,12 +382,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				B33EE23D29A143D600869DAF /* SidebarButtonView.swift in Sources */,
-				B3F21BD729AD1C4B00F4F4CB /* PDVStackWidget.swift in Sources */,
+				B3F21BD729AD1C4B00F4F4CB /* PDVStackWidgetView.swift in Sources */,
 				B3F21BD929AD1CB900F4F4CB /* GerenteResumeWidgetView.swift in Sources */,
 				B3D56C9029A3DC1800B97AAC /* ORCWidgetView.swift in Sources */,
 				B3421FAF29A0B26000951B6D /* MainView.swift in Sources */,
+				B3105EC529B0F3E1006D68B4 /* PDVCardWidgetPresenter.swift in Sources */,
 				B3E6E67729A338C500313A48 /* CircleProgressBarView.swift in Sources */,
 				B33EE23829A1348800869DAF /* SidebarContentPresenter.swift in Sources */,
+				B3105EC729B0FD96006D68B4 /* PDVStackWidgetPresenter.swift in Sources */,
 				B3D56C9229A69BFD00B97AAC /* PDVCardWidgetView.swift in Sources */,
 				B3421FBF29A0B99C00951B6D /* MainRouter.swift in Sources */,
 				B3421FC229A0BAFC00951B6D /* SidebarView.swift in Sources */,
