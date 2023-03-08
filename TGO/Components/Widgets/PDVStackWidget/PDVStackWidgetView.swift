@@ -27,6 +27,7 @@ class PDVStackWidgetView: UIView {
     }()
     
     private var firstTime = true
+    private let sizeHeader: CGFloat = 30
     
     var presenter: PDVStackWidgetPresenter? = nil
     

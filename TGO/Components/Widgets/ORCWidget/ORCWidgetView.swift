@@ -11,23 +11,27 @@ class ORCWidgetView: UIView {
     
     lazy var content: UIView = {
         let content = UIView(frame: .zero)
-        content.layer.shadowColor = UIColor.black.cgColor
-        content.layer.shadowOpacity = 0.5
-        content.layer.masksToBounds = false
-        content.layer.shadowOffset = CGSize(width: -1, height: -1)
+//        content.layer.shadowColor = UIColor.black.cgColor
+//        content.layer.shadowOpacity = 0.5
+//        content.layer.masksToBounds = false
+//        content.layer.shadowOffset = CGSize(width: -1, height: -1)
         content.layer.cornerRadius = 5
-        content.backgroundColor = UIColor(named: "background-widget")
+        content.backgroundColor = UIColor(named: "gray-elektra")
         return content
     }()
     
     lazy var title: UILabel = {
-        let title = UILabel(frame: .zero)
-        title.text = "ORC's"
+        let title = LabelBottomBordered(frame: .zero, color: UIColor(named: "lightGray-elektra"))
+        title.text = "ORC's Semanal"
         title.textAlignment = .center
         title.textColor = .black
         title.font = .boldSystemFont(ofSize: title.font.pointSize)
         title.minimumScaleFactor = 0.2
         title.adjustsFontSizeToFitWidth = true
+//        title.drawText(in: .init(
+//            origin: title.frame.origin,
+//            size: .init(width: title.frame.width, height: title.frame.height - 5)
+//        ))
         return title
     }()
     
@@ -95,9 +99,9 @@ class ORCWidgetView: UIView {
         content.addSubview(hstack)
         
         title.snp.makeConstraints { make in
-            make.top.equalToSuperview().inset(10)
-            make.horizontalEdges.equalToSuperview().inset(10)
-            make.height.equalTo(widgetHeight / 8)
+            make.top.equalToSuperview()
+            make.horizontalEdges.equalToSuperview()
+            make.height.equalToSuperview().multipliedBy(0.2)
         }
         
         hstack.snp.makeConstraints { make in

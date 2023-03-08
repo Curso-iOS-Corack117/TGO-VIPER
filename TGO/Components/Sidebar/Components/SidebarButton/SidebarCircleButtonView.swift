@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SidebarButtonView: UIButton {
+class SidebarCircleButtonView: UIButton {
     var imageName: String = ""
     var action: () -> Void
     var isSystemImage: Bool = false
@@ -40,7 +40,7 @@ class SidebarButtonView: UIButton {
         
         layer.cornerRadius = bounds.size.width / 2
         layer.shadowColor = UIColor.black.cgColor
-        layer.shadowOffset = CGSize(width: 0, height: 3)
+        layer.shadowOffset = CGSize(width: 0, height: 0)
         layer.shadowRadius = 2
         layer.shadowOpacity = 0.5
         layer.masksToBounds = false
@@ -49,7 +49,7 @@ class SidebarButtonView: UIButton {
     func setupView() {
         
         imageView?.contentMode = .scaleAspectFit
-        imageView?.tintColor = .white
+        imageView?.tintColor = .black
         
         imageView?.snp.makeConstraints { make in
             make.width.height.equalToSuperview().multipliedBy(0.5)
@@ -62,7 +62,9 @@ class SidebarButtonView: UIButton {
         
         setImage(image, for: .normal)
         clipsToBounds = true
-        backgroundColor = UIColor(named: "red-elektra")
+        backgroundColor = .white
+        layer.borderWidth = 2
+        layer.borderColor = UIColor.clear.cgColor
         addTarget(self, action: #selector(actionButton), for: .touchUpInside)
     }
     
@@ -75,10 +77,10 @@ class SidebarButtonView: UIButton {
 import SwiftUI
 
 @available(iOS 14, *)
-struct SidebarButtonView_Preview: PreviewProvider {
+struct SidebarCircleButtonView_Preview: PreviewProvider {
     static var previews: some View {
         // view controller using programmatic UI
-        SidebarButtonView(
+        SidebarCircleButtonView(
             imageName: "bell.badge",
             isSystemImage: true,
             action: {}

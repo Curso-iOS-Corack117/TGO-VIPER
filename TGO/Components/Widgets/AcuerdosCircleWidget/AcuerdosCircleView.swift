@@ -15,7 +15,7 @@ class AcuerdosCircleView: UIView {
     }()
     
     lazy var title: LabelBottomBordered = {
-        let title = LabelBottomBordered(frame: .zero)
+        let title = LabelBottomBordered(frame: .zero, color: UIColor(named: "gs-orange"))
         title.text = "Acuerdos"
         title.textAlignment = .center
         title.textColor = .black
@@ -58,7 +58,7 @@ class AcuerdosCircleView: UIView {
         content.addSubview(title)
         content.addSubview(circleProgress)
         
-        content.backgroundColor = .init(red: 0, green: 0, blue: 0, alpha: 0.1)
+        content.backgroundColor = UIColor(named: "gray-elektra")
         
         self.snp.makeConstraints { make in
             make.width.height.equalTo(widgetSize)
@@ -79,32 +79,6 @@ class AcuerdosCircleView: UIView {
             make.horizontalEdges.equalToSuperview()
             make.bottom.equalToSuperview().inset(10)
         }
-    }
-}
-
-class LabelBottomBordered: UILabel {
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("Error al inicializar la vista")
-    }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        
-        let border = CALayer()
-        let heightBorder: CGFloat = 2
-        border.backgroundColor = UIColor.orange.cgColor
-        border.frame = CGRect(
-            x: frame.minX,
-            y: frame.maxY,
-            width: frame.width,
-            height: heightBorder
-        )
-        layer.addSublayer(border)
     }
 }
 

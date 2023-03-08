@@ -9,23 +9,36 @@ import UIKit
 
 class SidebarContentView: UIView {
     
+    lazy var hamburguerButton: SidebarCircleButtonView = {
+        let button = SidebarCircleButtonView(imageName: "material-menu") {
+            
+        }
+        button.imageView?.tintColor = .init(named: "strongGray-elektra")
+        button.layer.borderColor = UIColor(named: "strongGray-elektra")?.cgColor
+        return button
+    }()
+    
+    lazy var questionButton: SidebarCircleButtonView = {
+        let button = SidebarCircleButtonView(imageName: "open-question-mark") {
+            
+        }
+        button.imageView?.tintColor = .init(named: "red-elektra")
+        button.layer.borderColor = UIColor.black.cgColor
+        return button
+    }()
+    
     lazy var sidebarButtons: [UIView] = {
         let SidebarButtonViews = [
-            SidebarButtonView(
-                imageName: "material-menu",
-                action: {
-//                    self.manager.isOpened.toggle()
-                }
-            ),
+            hamburguerButton,
             UIView(frame: .zero),
             UIView(frame: .zero),
-            SidebarButtonView(
+            SidebarCircleButtonView(
                 imageName: "material-home",
                 action: {
 //                    self.manager.viewType = .home
                 }
             ),
-            SidebarButtonView(
+            SidebarCircleButtonView(
                 imageName: "calendar-day",
                 action: {
 //                    self.manager.viewType = .agenda
@@ -47,7 +60,7 @@ class SidebarContentView: UIView {
             UIView(frame: .zero),
             UIView(frame: .zero),
             UIView(frame: .zero),
-            SidebarButtonView(
+            SidebarCircleButtonView(
                 imageName: "bell.badge",
                 isSystemImage: true,
                 action: {
@@ -63,12 +76,7 @@ class SidebarContentView: UIView {
 ////                    self.manager.viewType = .chat_zeus
 //                }
 //            ),
-            SidebarButtonView(
-                imageName: "open-question-mark",
-                action: {
-//                    self.manager.viewType = .ayuda
-                }
-            )
+            questionButton
         ]
         return SidebarButtonViews
     }()

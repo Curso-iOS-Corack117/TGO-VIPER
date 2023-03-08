@@ -14,13 +14,25 @@ class PDVCardWidgetView: UIView {
         return content
     }()
     
-    lazy var addButton: AddButtonView = {
-        let addButton = AddButtonView(frame: .zero)
+    lazy var addButton: CircleButtonView = {
+        let addButton = CircleButtonView(frame: .zero, image: .init(systemName: "plus"))
+        addButton.backgroundColor = UIColor(named: "red-elektra")
         return addButton
     }()
     
-    lazy var expandButton: ExpandButtonView = {
-        let expandButton = ExpandButtonView(frame: .zero)
+    lazy var expandButton: CircleButtonView = {
+        var image = UIImage(systemName: "arrow.up.left.and.arrow.down.right")
+        image = UIImage(cgImage: (image?.cgImage)!, scale: 1, orientation: .left)
+        let expandButton = CircleButtonView(
+            frame: .zero,
+            image: image
+        )
+        expandButton.imageView?.tintColor = .black
+        expandButton.backgroundColor = .init(named: "gray-elektra")
+        expandButton.imageView?.snp.makeConstraints { make in
+            make.width.height.equalToSuperview().multipliedBy(0.4)
+            make.center.equalToSuperview()
+        }
         return expandButton
     }()
     
@@ -65,11 +77,11 @@ class PDVCardWidgetView: UIView {
         
         if firstTime {
             scrollContent.addArrangedSubview(GerenteResumeWidgetView(widgetSize: content.frame.height))
-            scrollContent.addArrangedSubview(ORCWidgetView(widgetSize: content.frame.height))
             scrollContent.addArrangedSubview(AcuerdosCircleView(
                 percentage: 85,
                 widgetSize: content.frame.height
             ))
+            scrollContent.addArrangedSubview(ORCWidgetView(widgetSize: content.frame.height))
             firstTime = false
         }
         scrollView.contentInset = .init(top: 0, left: 0, bottom: 0, right: 50)
@@ -153,9 +165,12 @@ extension PDVCardWidgetView: UIDropInteractionDelegate {
 }
 
 //Vista perteneciente al botón de acciones
-internal class AddButtonView: UIButton {
+internal class CircleButtonView: UIButton {
     
-    override init(frame: CGRect) {
+    private let image: UIImage?
+    
+    init(frame: CGRect, image: UIImage?) {
+        self.image = image
         super.init(frame: frame)
         self.setupView()
     }
@@ -175,12 +190,11 @@ internal class AddButtonView: UIButton {
     }
     
     private func setupView() {
-        let image = UIImage(systemName: "plus")
         imageView?.tintColor = .white
         
         setImage(image, for: .normal)
         clipsToBounds = true
-        backgroundColor = UIColor(named: "red-elektra")
+        backgroundColor = .white
 //        addTarget(self, action: #selector(nil), for: .touchUpInside)
     }
 }

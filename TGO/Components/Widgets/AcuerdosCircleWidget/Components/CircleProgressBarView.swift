@@ -40,7 +40,7 @@ class CircleProgressBarView: UIView {
         progressLayer.lineCap = .round
         progressLayer.lineWidth = lineWidth
         progressLayer.strokeEnd = 0
-        progressLayer.strokeColor = UIColor.orange.cgColor
+        progressLayer.strokeColor = UIColor(named: "gs-orange")?.cgColor
         return progressLayer
     }()
     
