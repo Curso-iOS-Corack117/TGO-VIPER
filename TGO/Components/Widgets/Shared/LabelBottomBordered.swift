@@ -33,8 +33,5 @@ class LabelBottomBordered: UILabel {
             height: heightBorder
         )
         layer.addSublayer(border)
-        print("frame")
-        print(frame)
-        print(frame.minX)
     }
 }

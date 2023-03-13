@@ -10,6 +10,7 @@
 		B25E9DC08E0EDE7564672F88 /* Pods_TGO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83133BB87AC90915AF714D3B /* Pods_TGO.framework */; };
 		B3105EC529B0F3E1006D68B4 /* PDVCardWidgetPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3105EC429B0F3E1006D68B4 /* PDVCardWidgetPresenter.swift */; };
 		B3105EC729B0FD96006D68B4 /* PDVStackWidgetPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3105EC629B0FD96006D68B4 /* PDVStackWidgetPresenter.swift */; };
+		B3105EC929B8EC52006D68B4 /* SidebarRectangleButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3105EC829B8EC52006D68B4 /* SidebarRectangleButtonView.swift */; };
 		B327676129A18E9B00896F92 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B327676029A18E9B00896F92 /* Assets.xcassets */; };
 		B327676429A2083500896F92 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B327676329A2083500896F92 /* HomeView.swift */; };
 		B33EE23629A1339A00869DAF /* SidebarContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33EE23529A1339A00869DAF /* SidebarContentView.swift */; };
@@ -25,6 +26,7 @@
 		B3421FC829A0BEB000951B6D /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3421FC729A0BEB000951B6D /* UIViewControllerExtension.swift */; };
 		B3421FCA29A0BED100951B6D /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3421FC929A0BED100951B6D /* UIViewExtension.swift */; };
 		B357B3C629B63D8500DA267B /* LabelBottomBordered.swift in Sources */ = {isa = PBXBuildFile; fileRef = B357B3C529B63D8500DA267B /* LabelBottomBordered.swift */; };
+		B3B7331429B901C500027E04 /* SidebarButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B7331329B901C500027E04 /* SidebarButtonView.swift */; };
 		B3D56C9029A3DC1800B97AAC /* ORCWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D56C8F29A3DC1800B97AAC /* ORCWidgetView.swift */; };
 		B3D56C9229A69BFD00B97AAC /* PDVCardWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D56C9129A69BFD00B97AAC /* PDVCardWidgetView.swift */; };
 		B3E6E67429A293F500313A48 /* AcuerdosCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E6E67329A293F500313A48 /* AcuerdosCircleView.swift */; };
@@ -39,6 +41,7 @@
 		83133BB87AC90915AF714D3B /* Pods_TGO.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TGO.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3105EC429B0F3E1006D68B4 /* PDVCardWidgetPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDVCardWidgetPresenter.swift; sourceTree = "<group>"; };
 		B3105EC629B0FD96006D68B4 /* PDVStackWidgetPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDVStackWidgetPresenter.swift; sourceTree = "<group>"; };
+		B3105EC829B8EC52006D68B4 /* SidebarRectangleButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarRectangleButtonView.swift; sourceTree = "<group>"; };
 		B327676029A18E9B00896F92 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B327676329A2083500896F92 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		B33EE23529A1339A00869DAF /* SidebarContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarContentView.swift; sourceTree = "<group>"; };
@@ -56,6 +59,7 @@
 		B3421FC729A0BEB000951B6D /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		B3421FC929A0BED100951B6D /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		B357B3C529B63D8500DA267B /* LabelBottomBordered.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelBottomBordered.swift; sourceTree = "<group>"; };
+		B3B7331329B901C500027E04 /* SidebarButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarButtonView.swift; sourceTree = "<group>"; };
 		B3D56C8F29A3DC1800B97AAC /* ORCWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ORCWidgetView.swift; sourceTree = "<group>"; };
 		B3D56C9129A69BFD00B97AAC /* PDVCardWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDVCardWidgetView.swift; sourceTree = "<group>"; };
 		B3E6E67329A293F500313A48 /* AcuerdosCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcuerdosCircleView.swift; sourceTree = "<group>"; };
@@ -145,6 +149,8 @@
 			isa = PBXGroup;
 			children = (
 				B33EE23C29A143D600869DAF /* SidebarCircleButtonView.swift */,
+				B3105EC829B8EC52006D68B4 /* SidebarRectangleButtonView.swift */,
+				B3B7331329B901C500027E04 /* SidebarButtonView.swift */,
 			);
 			path = SidebarButton;
 			sourceTree = "<group>";
@@ -400,6 +406,7 @@
 				B3105EC529B0F3E1006D68B4 /* PDVCardWidgetPresenter.swift in Sources */,
 				B3E6E67729A338C500313A48 /* CircleProgressBarView.swift in Sources */,
 				B33EE23829A1348800869DAF /* SidebarContentPresenter.swift in Sources */,
+				B3105EC929B8EC52006D68B4 /* SidebarRectangleButtonView.swift in Sources */,
 				B3105EC729B0FD96006D68B4 /* PDVStackWidgetPresenter.swift in Sources */,
 				B3D56C9229A69BFD00B97AAC /* PDVCardWidgetView.swift in Sources */,
 				B3421FBF29A0B99C00951B6D /* MainRouter.swift in Sources */,
@@ -409,6 +416,7 @@
 				B3421FAB29A0B26000951B6D /* AppDelegate.swift in Sources */,
 				B3421FC829A0BEB000951B6D /* UIViewControllerExtension.swift in Sources */,
 				B327676429A2083500896F92 /* HomeView.swift in Sources */,
+				B3B7331429B901C500027E04 /* SidebarButtonView.swift in Sources */,
 				B357B3C629B63D8500DA267B /* LabelBottomBordered.swift in Sources */,
 				B3421FCA29A0BED100951B6D /* UIViewExtension.swift in Sources */,
 				B3E6E67429A293F500313A48 /* AcuerdosCircleView.swift in Sources */,

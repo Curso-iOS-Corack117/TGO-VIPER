@@ -18,6 +18,8 @@ class SidebarView: UIView {
     
     lazy var sidebarContent: SidebarContentView = {
         let sidebarContent = SidebarContentView(frame: .zero)
+        sidebarContent.delegate = self.presenter
+        sidebarContent.setupButtons()
         return sidebarContent
     }()
     
@@ -48,9 +50,9 @@ class SidebarView: UIView {
     }
     
     static func getSidebarWidth() -> CGFloat {
-        let devicePosition = UIDevice.current.orientation.isLandscape
+        let devicePosition = UIScreen.main.bounds.size.width > UIScreen.main.bounds.size.height
         let widthScreen = UIScreen.main.bounds.size.width
-        let percentage = devicePosition ? 0.06 : 0.07
+        let percentage = devicePosition ? 0.05 : 0.07
         let sidebarWidth = widthScreen * percentage
         return sidebarWidth
     }

@@ -21,13 +21,12 @@ class PDVCardWidgetView: UIView {
     }()
     
     lazy var expandButton: CircleButtonView = {
-        var image = UIImage(systemName: "arrow.up.left.and.arrow.down.right")
-        image = UIImage(cgImage: (image?.cgImage)!, scale: 1, orientation: .left)
+        var image = UIImage(named: "expand-icon")
         let expandButton = CircleButtonView(
             frame: .zero,
-            image: image
+            image: .init(named: "expand-icon")
         )
-        expandButton.imageView?.tintColor = .black
+        expandButton.imageView?.tintColor = .init(named: "lightGray-elektra")
         expandButton.backgroundColor = .init(named: "gray-elektra")
         expandButton.imageView?.snp.makeConstraints { make in
             make.width.height.equalToSuperview().multipliedBy(0.4)
@@ -170,7 +169,7 @@ internal class CircleButtonView: UIButton {
     private let image: UIImage?
     
     init(frame: CGRect, image: UIImage?) {
-        self.image = image
+        self.image = image?.withRenderingMode(.alwaysTemplate)
         super.init(frame: frame)
         self.setupView()
     }

@@ -12,7 +12,7 @@ class PDVStackWidgetView: UIView {
     lazy var vstack: UIStackView = {
         let stack = UIStackView(frame: .zero)
         stack.axis = .vertical
-        stack.spacing = 8
+        stack.spacing = 10
         return stack
     }()
     
@@ -21,9 +21,9 @@ class PDVStackWidgetView: UIView {
         return scrollView
     }()
     
-    lazy var container: UIView = {
-        let container = UIView(frame: .zero)
-        return container
+    lazy var header: UIStackView = {
+        let stack = UIStackView(frame: .zero)
+        return stack
     }()
     
     private var firstTime = true
@@ -44,10 +44,12 @@ class PDVStackWidgetView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         if firstTime {
-            let pdvWidget = PDVCardWidgetView(widgetSize: frame.width - 30)
-            pdvWidget.presenter = PDVCardWidgetPresenter(viewUI: pdvWidget, id: 0)
-            pdvWidget.stackWidgetDelegate = presenter
-            vstack.addArrangedSubview(pdvWidget)
+            for id in 0..<4 {
+                let pdvWidget = PDVCardWidgetView(widgetSize: frame.width - 30)
+                pdvWidget.presenter = PDVCardWidgetPresenter(viewUI: pdvWidget, id: id)
+                pdvWidget.stackWidgetDelegate = presenter
+                vstack.addArrangedSubview(pdvWidget)
+            }
             firstTime = false
         }
     }
@@ -55,7 +57,7 @@ class PDVStackWidgetView: UIView {
     private func setupView() {
         addSubview(scrollView)
         scrollView.addSubview(vstack)
-        
+                
         scrollView.snp.makeConstraints { make in
             make.edges.equalToSuperview().inset(10)
         }
@@ -64,7 +66,13 @@ class PDVStackWidgetView: UIView {
             make.edges.equalToSuperview().inset(5)
         }
         
-        backgroundColor = UIColor(named: "white-gray")
+        layer.shadowColor = UIColor.black.cgColor
+        layer.shadowOpacity = 0.5
+        layer.masksToBounds = false
+        layer.shadowOffset = CGSize(width: 0, height: 0)
+        layer.shadowRadius = 3
+        layer.cornerRadius = 10
+        backgroundColor = UIColor(named: "gray-elektra")
     }
 }
 

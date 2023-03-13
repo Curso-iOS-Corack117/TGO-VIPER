@@ -35,22 +35,10 @@ class ORCWidgetView: UIView {
         return title
     }()
     
-    lazy var subtitle: UILabel = {
-        let subtitle = UILabel(frame: .zero)
-        subtitle.text = "Puntos Ranking"
-        subtitle.textColor = .black
-        subtitle.textAlignment = .left
-        subtitle.numberOfLines = 2
-        subtitle.font = .boldSystemFont(ofSize: subtitle.font.pointSize)
-        subtitle.minimumScaleFactor = 0.1
-        subtitle.adjustsFontSizeToFitWidth = true
-        return subtitle
-    }()
-    
     lazy var tableORC: TableORC = TableORC(exp: 31.22,neg: 61.69, total: 92.91, seg: 81.03)
     
     lazy var hstack: UIStackView = {
-        let stack = UIStackView(arrangedSubviews: [subtitle, tableORC])
+        let stack = UIStackView(arrangedSubviews: [tableORC])
         stack.axis = .horizontal
         stack.distribution = .equalCentering
         return stack
@@ -110,35 +98,23 @@ class ORCWidgetView: UIView {
             make.bottom.equalToSuperview().inset(10)
         }
         
-        subtitle.snp.makeConstraints { make in
-            make.width.equalToSuperview().multipliedBy(1.0 / 6.0)
-            make.height.equalToSuperview()
-        }
-        
         tableORC.snp.makeConstraints { make in
-            make.trailing.equalToSuperview()
-            make.leading.equalTo(subtitle.snp.trailing).offset(8)
+            make.horizontalEdges.equalToSuperview()
         }
     }
 }
 
 internal class TableORC: UIView {
     
-    lazy var expColumn: ColumnORC = {
-        return ColumnORC(title: "Exp.", value: "\(exp)", extra: "1")
+    lazy var extraColumn: ColumnORC = {
+        let column = ColumnORC(title: " ", value: "P", extra: "R")
+        column.resizeEqually = true
+        return column
     }()
-    
-    lazy var negColumn: ColumnORC = {
-        return ColumnORC(title: "Neg.", value: "\(neg)", extra: "4")
-    }()
-    
-    lazy var totalColumn: ColumnORC = {
-        return ColumnORC(title: "Total", value: "\(total)", extra: "1")
-    }()
-    
-    lazy var segColumn: ColumnORC = {
-        return ColumnORC(title: "Seg.", value: "\(seg)")
-    }()
+    lazy var expColumn = ColumnORC(title: "Exp.", value: "\(exp)", extra: "1")
+    lazy var negColumn = ColumnORC(title: "Neg.", value: "\(neg)", extra: "4")
+    lazy var totalColumn = ColumnORC(title: "Total", value: "\(total)", extra: "1")
+    lazy var segColumn = ColumnORC(title: "Seg.", value: "\(seg)")
     
     lazy var hstack: UIStackView = {
         let stack = UIStackView(arrangedSubviews: [
@@ -148,7 +124,17 @@ internal class TableORC: UIView {
             segColumn
         ])
         stack.axis = .horizontal
-        stack.distribution = .fillEqually
+        stack.distribution = .fillProportionally
+        return stack
+    }()
+    
+    lazy var parentStack: UIStackView = {
+        let stack = UIStackView(arrangedSubviews: [
+            extraColumn,
+            hstack
+        ])
+        stack.axis = .horizontal
+        stack.distribution = .equalSpacing
         return stack
     }()
     
@@ -171,10 +157,15 @@ internal class TableORC: UIView {
     }
     
     private func setupView() {
-        addSubview(hstack)
+        addSubview(parentStack)
+        parentStack.addArrangedSubview(hstack)
         
-        hstack.snp.makeConstraints { make in
+        parentStack.snp.makeConstraints { make in
             make.edges.equalToSuperview()
+        }
+        
+        extraColumn.snp.makeConstraints { make in
+            make.width.equalToSuperview().multipliedBy(0.1)
         }
         
         expColumn.backgroundColor = UIColor(named: "blue-table")
@@ -204,6 +195,7 @@ internal class ColumnORC: UIView {
     private let title: String
     private let value: String
     private let extra: String
+    var resizeEqually: Bool = false
     
     init(title: String, value: String, extra: String = "") {
         self.title = title
@@ -221,15 +213,20 @@ internal class ColumnORC: UIView {
         super.layoutSubviews()
         
         titleLabel.snp.makeConstraints { make in
-            make.height.equalTo(frame.height / 3)
+            make.height.equalTo(resizeEqually ? frame.height / 2.5 : frame.height / 3)
         }
         
         valueLabel.snp.makeConstraints { make in
-            make.height.equalTo(frame.height / 3)
+            make.height.equalTo(resizeEqually ? frame.height / 4 : frame.height / 3)
         }
         
         extraLabel.snp.makeConstraints { make in
-            make.height.equalTo(frame.height / 6)
+            make.height.equalTo(resizeEqually ? frame.height / 4 : frame.height / 6)
+        }
+        
+        if resizeEqually {
+            valueLabel.textColor = UIColor(named: "lightGray-elektra")
+            extraLabel.textColor = UIColor(named: "lightGray-elektra")
         }
     }
     
@@ -239,14 +236,15 @@ internal class ColumnORC: UIView {
         vstack.snp.makeConstraints { make in
             make.horizontalEdges.equalToSuperview().inset(6)
         }
-        
     }
     
     private func element(value: String, isBold: Bool = false) -> UILabel  {
         let element = UILabel(frame: .zero)
         element.text = value
+        element.textColor = .black
         element.textAlignment = .center
         element.sizeToFit()
+        element.minimumScaleFactor = 0.2
         element.adjustsFontSizeToFitWidth = true
         if isBold {
             element.font = .boldSystemFont(ofSize: element.font.pointSize)
@@ -263,16 +261,16 @@ struct ORCWidgetView_Preview: PreviewProvider {
     
     static var previews: some View {
         // view controller using programmatic UI
-        ORCWidgetView(widgetSize: 100).showPreview()
+        ORCWidgetView(widgetSize: 150).showPreview()
             .ignoresSafeArea()
             .frame(
-                minWidth: 150,
-                maxWidth: 150,
-                minHeight: 100,
-                maxHeight: 100,
+                minWidth: 300,
+                maxWidth: 300,
+                minHeight: 150,
+                maxHeight: 150,
                 alignment: .center
             )
-            .previewLayout(.fixed(width: 200, height: 100))
+            .previewLayout(.fixed(width: 350, height: 200))
     }
 }
 #endif

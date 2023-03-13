@@ -14,19 +14,25 @@ class HomeView: UIViewController {
         return pdvWidget
     }()
     
+    lazy var container = UIView(frame: .zero)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupView()
     }
     
     private func setupView() {
-        view.addSubview(pdvStackWidget)
+        view.addSubview(container)
+        container.addSubview(pdvStackWidget)
+        
+        container.snp.makeConstraints { make in
+            make.edges.equalToSuperview().inset(10)
+        }
         
         pdvStackWidget.snp.makeConstraints { make in
             make.verticalEdges.equalToSuperview()
-            make.width.equalToSuperview().multipliedBy(0.5)
+            make.width.equalToSuperview().multipliedBy(0.7)
         }
-        
         view.backgroundColor = .white
     }
 }

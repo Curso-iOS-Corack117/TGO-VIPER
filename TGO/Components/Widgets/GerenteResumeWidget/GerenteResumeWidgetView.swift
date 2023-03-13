@@ -15,6 +15,7 @@ class GerenteResumeWidgetView: UIView {
         label.minimumScaleFactor = 0.2
         label.numberOfLines = 2
         label.adjustsFontSizeToFitWidth = true
+        label.textColor = .black
         return label
     }()
     
@@ -28,6 +29,7 @@ class GerenteResumeWidgetView: UIView {
         label.minimumScaleFactor = 0.4
         label.adjustsFontSizeToFitWidth = true
         label.textAlignment = .center
+        label.textColor = .black
         return label
     }()
     
@@ -36,6 +38,7 @@ class GerenteResumeWidgetView: UIView {
         label.minimumScaleFactor = 0.4
         label.adjustsFontSizeToFitWidth = true
         label.textAlignment = .center
+        label.textColor = .black
         return label
     }()
     

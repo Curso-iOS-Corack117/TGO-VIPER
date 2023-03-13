@@ -29,13 +29,15 @@ class MainView: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .white
+        view.backgroundColor = .clear
         self.setupView()
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        sidebar.presenter.sidebarWidth = SidebarView.getSidebarWidth()
-        updateView()
+        DispatchQueue.main.async { [self] in
+            sidebar.presenter.sidebarWidth = SidebarView.getSidebarWidth()
+            updateView()
+        }
     }
     
     private func setupView() {
@@ -43,6 +45,7 @@ class MainView: UIViewController {
         content.addSubview(bodyView)
         content.addSubview(sidebar)
         
+        content.backgroundColor = .white
         content.snp.makeConstraints { make in
             make.leading.trailing.bottom.equalToSuperview()
             make.top.equalTo(view.safeAreaLayoutGuide)

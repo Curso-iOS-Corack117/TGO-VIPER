@@ -46,7 +46,7 @@ class CircleProgressBarView: UIView {
     
     lazy var percentageLabel: UILabel = {
         let label = UILabel(frame: .zero)
-        label.text = "\(percentage)%"
+        label.text = "\(Int(percentage))%"
         label.textColor = .black
         return label
     }()
