@@ -80,7 +80,7 @@ class SidebarContentView: UIView {
         return container
     }()
     
-    var delegate: SidebarViewPresentable?
+    var delegate: SidebarPresentable?
     
     override init(frame: CGRect) {
         super.init(frame: frame)

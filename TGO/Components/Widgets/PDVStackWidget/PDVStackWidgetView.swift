@@ -21,9 +21,9 @@ class PDVStackWidgetView: UIView {
         return scrollView
     }()
     
-    lazy var header: UIStackView = {
-        let stack = UIStackView(frame: .zero)
-        return stack
+    lazy var header: UIView = {
+        let view = UIView(frame: .zero)
+        return view
     }()
     
     private var firstTime = true
@@ -44,8 +44,8 @@ class PDVStackWidgetView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         if firstTime {
-            for id in 0..<4 {
-                let pdvWidget = PDVCardWidgetView(widgetSize: frame.width - 30)
+            for id in 0..<5 {
+                let pdvWidget = PDVCardWidgetView()
                 pdvWidget.presenter = PDVCardWidgetPresenter(viewUI: pdvWidget, id: id)
                 pdvWidget.stackWidgetDelegate = presenter
                 vstack.addArrangedSubview(pdvWidget)
@@ -55,15 +55,28 @@ class PDVStackWidgetView: UIView {
     }
     
     private func setupView() {
+        addSubview(header)
         addSubview(scrollView)
         scrollView.addSubview(vstack)
+        
+//        header.backgroundColor = .red
+        header.snp.makeConstraints { make in
+            make.top.equalToSuperview().inset(10)
+            make.height.equalTo(40)
+            make.horizontalEdges.equalToSuperview().inset(10)
+        }
                 
         scrollView.snp.makeConstraints { make in
-            make.edges.equalToSuperview().inset(10)
+            make.horizontalEdges.equalToSuperview().inset(10)
+            make.top.equalTo(header.snp.bottom)
+            make.bottom.equalToSuperview().inset(10)
+            
         }
         
         vstack.snp.makeConstraints { make in
-            make.edges.equalToSuperview().inset(5)
+            make.verticalEdges.equalToSuperview().inset(5)
+            make.width.equalToSuperview().inset(5)
+            make.centerX.equalToSuperview()
         }
         
         layer.shadowColor = UIColor.black.cgColor
@@ -72,13 +85,19 @@ class PDVStackWidgetView: UIView {
         layer.shadowOffset = CGSize(width: 0, height: 0)
         layer.shadowRadius = 3
         layer.cornerRadius = 10
+        clipsToBounds = true
         backgroundColor = UIColor(named: "gray-elektra")
     }
 }
 
-extension PDVStackWidgetView: PDVStackWidgetViewUI {
-    func updatePDV() {
-        
+extension PDVStackWidgetView: PDVStackWidgetUI {
+    func updateWidget() {
+        for pdvwidget in vstack.arrangedSubviews {
+            if let widget = pdvwidget as? PDVCardWidgetView {
+                widget.widgetSize = bounds.width
+                widget.updateView()
+            }
+        }
     }
 }
 

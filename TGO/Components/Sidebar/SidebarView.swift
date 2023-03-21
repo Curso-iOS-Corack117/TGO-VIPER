@@ -23,9 +23,9 @@ class SidebarView: UIView {
         return sidebarContent
     }()
     
-    var presenter: SidebarViewPresentable
+    var presenter: SidebarPresentable
     
-    init(presenter: SidebarViewPresentable) {
+    init(presenter: SidebarPresentable) {
         self.presenter = presenter
         super.init(frame: .zero)
         self.setupView()
@@ -58,7 +58,7 @@ class SidebarView: UIView {
     }
 }
 
-extension SidebarView: SidebarViewUI {
+extension SidebarView: SidebarUI {
     func updateView() {
         sidebarContent.snp.updateConstraints { make in
             make.width.equalTo(presenter.sidebarWidth)
@@ -74,7 +74,7 @@ struct SidebarView_Preview: PreviewProvider {
     
     static var previews: some View {
         let sidebarView: SidebarView = {
-            let presenter = SidebarViewPresenter()
+            let presenter = SidebarPresenter()
             let sidebar = SidebarView(presenter: presenter)
             presenter.viewUI = sidebar
             return sidebar

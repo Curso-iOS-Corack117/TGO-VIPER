@@ -7,22 +7,22 @@
 
 import Foundation
 
-protocol SidebarViewUI: AnyObject {
+protocol SidebarUI: AnyObject {
     var sidebarContent: SidebarContentView { get set }
     func updateView() -> Void
 }
 
-protocol SidebarButtonViewUI: AnyObject {
+protocol SidebarButtonUI: AnyObject {
     var imageName: String { get set }
     var action: () -> Void { get }
     var isSystemImage: Bool { get set }
 }
 
-protocol SidebarViewPresentable: AnyObject {
-    var viewUI: SidebarViewUI? { get }
+protocol SidebarPresentable: AnyObject {
+    var viewUI: SidebarUI? { get }
     var viewType: ViewTypes { get set }
     var sidebarWidth: CGFloat { get set }
-    func changeActiveView(active: SidebarButtonViewUI) -> Void
+    func changeActiveView(active: SidebarButtonUI) -> Void
 }
 
 internal enum ViewTypes {
@@ -34,9 +34,9 @@ internal enum ViewTypes {
     case ayuda
 }
 
-class SidebarViewPresenter: SidebarViewPresentable {
+class SidebarPresenter: SidebarPresentable {
     
-    weak var viewUI: SidebarViewUI?
+    weak var viewUI: SidebarUI?
     var viewType: ViewTypes = .home
     var sidebarWidth: CGFloat {
         didSet {
@@ -50,7 +50,7 @@ class SidebarViewPresenter: SidebarViewPresentable {
         self.sidebarWidth = SidebarView.getSidebarWidth()
     }
     
-    func changeActiveView(active: SidebarButtonViewUI) {
+    func changeActiveView(active: SidebarButtonUI) {
         if let activeButton = active as? SidebarRectangleButtonView {
             viewUI?.sidebarContent.viewButtons.arrangedSubviews.forEach {
                 if let button = $0 as? SidebarRectangleButtonView {

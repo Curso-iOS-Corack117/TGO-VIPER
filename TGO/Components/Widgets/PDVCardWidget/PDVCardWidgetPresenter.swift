@@ -8,29 +8,29 @@
 import Foundation
 
 //Protocolo preteneciente a la vista para su conexión con el presentador
-protocol PDVCardWidgetViewUI: AnyObject {
+protocol PDVCardWidgetUI: AnyObject {
     var presenter: PDVCardWidgetPresenter? { get set }
     var stackWidgetDelegate: PDVStackWidgetPresenter? { get set }
     func updateView() -> Void
 }
 
 //Extension del protocolo para variables opcionales
-extension PDVCardWidgetViewUI {
+extension PDVCardWidgetUI {
     var stackWidgetDelegate: PDVStackWidgetPresenter? { return nil }
 }
 
 //Protocolo perteneciente al presentador
-protocol PDVCardWidgetViewPresentable: AnyObject {
-    var viewUI: PDVCardWidgetViewUI? { get }
+protocol PDVCardWidgetPresentable: AnyObject {
+    var viewUI: PDVCardWidgetUI? { get }
     var id: Int? { get }
 }
 
 //Presentador
-class PDVCardWidgetPresenter: PDVCardWidgetViewPresentable {
-    var viewUI: PDVCardWidgetViewUI?
+class PDVCardWidgetPresenter: PDVCardWidgetPresentable {
+    var viewUI: PDVCardWidgetUI?
     var id: Int?
     
-    init(viewUI: PDVCardWidgetViewUI? = nil, id: Int? = nil) {
+    init(viewUI: PDVCardWidgetUI? = nil, id: Int? = nil) {
         self.viewUI = viewUI
         self.id = id
     }

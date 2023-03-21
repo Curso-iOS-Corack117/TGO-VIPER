@@ -11,7 +11,7 @@ import SnapKit
 class MainView: UIViewController {
     
     lazy var sidebar: SidebarView = {
-        let presenter = SidebarViewPresenter()
+        let presenter = SidebarPresenter()
         let sidebar = SidebarView(presenter: presenter)
         presenter.viewUI = sidebar
         return sidebar
@@ -25,6 +25,8 @@ class MainView: UIViewController {
     lazy var content: UIView = {
         return UIView(frame: .zero)
     }()
+    
+    var currentController: UIViewController? = nil
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -81,19 +83,20 @@ class MainView: UIViewController {
         
         switch sidebar.presenter.viewType {
             case .home:
-            vc = HomeView()
+                vc = HomeView()
             case .agenda:
-            vc = HomeView()
+                vc = HomeView()
             case .dashboard:
-            vc = HomeView()
+                vc = HomeView()
             case .visita_pdv:
-            vc = HomeView()
+                vc = HomeView()
             case .chat_zeus:
-            vc = HomeView()
+                vc = HomeView()
             case .ayuda:
-            vc = HomeView()
+                vc = HomeView()
         }
         addChild(vc)
+        currentController = vc
         bodyView.addSubview(vc.view)
         vc.view.snp.makeConstraints { make in
             make.width.height.equalToSuperview()

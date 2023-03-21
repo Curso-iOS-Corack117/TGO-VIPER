@@ -23,7 +23,7 @@ class SidebarButtonView: UIButton {
         return image ?? UIImage()
     }()
     
-    var delegate: SidebarViewPresentable?
+    var delegate: SidebarPresentable?
     
     init(imageName: String = "", isSystemImage: Bool = false, action: @escaping () -> Void = {}) {
         self.imageName = imageName
@@ -59,7 +59,7 @@ class SidebarButtonView: UIButton {
 
 
 // Implementación de protocolo SidebarButtonView
-extension SidebarButtonView: SidebarButtonViewUI {
+extension SidebarButtonView: SidebarButtonUI {
     @objc func actionButton() {
         action()
         print("hola")

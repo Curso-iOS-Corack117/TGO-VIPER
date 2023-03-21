@@ -26,6 +26,9 @@
 		B3421FC829A0BEB000951B6D /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3421FC729A0BEB000951B6D /* UIViewControllerExtension.swift */; };
 		B3421FCA29A0BED100951B6D /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3421FC929A0BED100951B6D /* UIViewExtension.swift */; };
 		B357B3C629B63D8500DA267B /* LabelBottomBordered.swift in Sources */ = {isa = PBXBuildFile; fileRef = B357B3C529B63D8500DA267B /* LabelBottomBordered.swift */; };
+		B381E93C29C0BED300EB224D /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B381E93B29C0BED300EB224D /* HomePresenter.swift */; };
+		B381E93F29C4D1DF00EB224D /* CircleButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B381E93E29C4D1DF00EB224D /* CircleButtonView.swift */; };
+		B381E94129C4D20500EB224D /* ExpandButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B381E94029C4D20500EB224D /* ExpandButtonView.swift */; };
 		B3B7331429B901C500027E04 /* SidebarButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B7331329B901C500027E04 /* SidebarButtonView.swift */; };
 		B3D56C9029A3DC1800B97AAC /* ORCWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D56C8F29A3DC1800B97AAC /* ORCWidgetView.swift */; };
 		B3D56C9229A69BFD00B97AAC /* PDVCardWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D56C9129A69BFD00B97AAC /* PDVCardWidgetView.swift */; };
@@ -59,6 +62,9 @@
 		B3421FC729A0BEB000951B6D /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		B3421FC929A0BED100951B6D /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		B357B3C529B63D8500DA267B /* LabelBottomBordered.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelBottomBordered.swift; sourceTree = "<group>"; };
+		B381E93B29C0BED300EB224D /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
+		B381E93E29C4D1DF00EB224D /* CircleButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButtonView.swift; sourceTree = "<group>"; };
+		B381E94029C4D20500EB224D /* ExpandButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandButtonView.swift; sourceTree = "<group>"; };
 		B3B7331329B901C500027E04 /* SidebarButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarButtonView.swift; sourceTree = "<group>"; };
 		B3D56C8F29A3DC1800B97AAC /* ORCWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ORCWidgetView.swift; sourceTree = "<group>"; };
 		B3D56C9129A69BFD00B97AAC /* PDVCardWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDVCardWidgetView.swift; sourceTree = "<group>"; };
@@ -101,6 +107,7 @@
 			isa = PBXGroup;
 			children = (
 				B327676329A2083500896F92 /* HomeView.swift */,
+				B381E93B29C0BED300EB224D /* HomePresenter.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -226,6 +233,15 @@
 			path = Shared;
 			sourceTree = "<group>";
 		};
+		B381E93D29C4D1B100EB224D /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				B381E93E29C4D1DF00EB224D /* CircleButtonView.swift */,
+				B381E94029C4D20500EB224D /* ExpandButtonView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		B3D56C8929A3DBD500B97AAC /* GerenteResumeWidget */ = {
 			isa = PBXGroup;
 			children = (
@@ -252,6 +268,7 @@
 		B3D56C8C29A3DBED00B97AAC /* PDVCardWidget */ = {
 			isa = PBXGroup;
 			children = (
+				B381E93D29C4D1B100EB224D /* Components */,
 				B3D56C9129A69BFD00B97AAC /* PDVCardWidgetView.swift */,
 				B3105EC429B0F3E1006D68B4 /* PDVCardWidgetPresenter.swift */,
 			);
@@ -412,9 +429,12 @@
 				B3421FBF29A0B99C00951B6D /* MainRouter.swift in Sources */,
 				B3421FC229A0BAFC00951B6D /* SidebarView.swift in Sources */,
 				B33EE23629A1339A00869DAF /* SidebarContentView.swift in Sources */,
+				B381E94129C4D20500EB224D /* ExpandButtonView.swift in Sources */,
 				B3421FC429A0BB0700951B6D /* SidebarPresenter.swift in Sources */,
+				B381E93C29C0BED300EB224D /* HomePresenter.swift in Sources */,
 				B3421FAB29A0B26000951B6D /* AppDelegate.swift in Sources */,
 				B3421FC829A0BEB000951B6D /* UIViewControllerExtension.swift in Sources */,
+				B381E93F29C4D1DF00EB224D /* CircleButtonView.swift in Sources */,
 				B327676429A2083500896F92 /* HomeView.swift in Sources */,
 				B3B7331429B901C500027E04 /* SidebarButtonView.swift in Sources */,
 				B357B3C629B63D8500DA267B /* LabelBottomBordered.swift in Sources */,

@@ -16,9 +16,19 @@ class HomeView: UIViewController {
     
     lazy var container = UIView(frame: .zero)
     
+    var presenter: HomePresenter = HomePresenter()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        presenter.viewUI = self
         self.setupView()
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        DispatchQueue.main.async { [self] in
+            print("hola")
+            pdvStackWidget.updateWidget()
+        }
     }
     
     private func setupView() {
@@ -34,6 +44,12 @@ class HomeView: UIViewController {
             make.width.equalToSuperview().multipliedBy(0.7)
         }
         view.backgroundColor = .white
+    }
+}
+
+extension HomeView: HomeViewUI {
+    func updateView() {
+        
     }
 }
 
