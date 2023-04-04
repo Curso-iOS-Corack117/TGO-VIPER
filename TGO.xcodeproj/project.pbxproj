@@ -45,6 +45,9 @@
 		B3105EC429B0F3E1006D68B4 /* PDVCardWidgetPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDVCardWidgetPresenter.swift; sourceTree = "<group>"; };
 		B3105EC629B0FD96006D68B4 /* PDVStackWidgetPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDVStackWidgetPresenter.swift; sourceTree = "<group>"; };
 		B3105EC829B8EC52006D68B4 /* SidebarRectangleButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarRectangleButtonView.swift; sourceTree = "<group>"; };
+		B321568729DB3D4E00CE3453 /* TGOFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TGOFramework.framework; path = "../../../../Desktop/ArchiveFrameworks/TGOFramework 2023-04-03 10-57-29/Products/Library/Frameworks/TGOFramework.framework"; sourceTree = "<group>"; };
+		B321568B29DB3DCD00CE3453 /* TGOFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TGOFramework.framework; path = TGO/TGOFramework.framework; sourceTree = "<group>"; };
+		B321568F29DB3FAD00CE3453 /* TGOFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TGOFramework.framework; sourceTree = "<group>"; };
 		B327676029A18E9B00896F92 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B327676329A2083500896F92 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		B33EE23529A1339A00869DAF /* SidebarContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarContentView.swift; sourceTree = "<group>"; };
@@ -89,6 +92,9 @@
 		0F5AFB2199BC8895DDE8844B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B321568729DB3D4E00CE3453 /* TGOFramework.framework */,
+				B321568B29DB3DCD00CE3453 /* TGOFramework.framework */,
+				B321568F29DB3FAD00CE3453 /* TGOFramework.framework */,
 				83133BB87AC90915AF714D3B /* Pods_TGO.framework */,
 			);
 			name = Frameworks;
@@ -581,6 +587,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = DTR7V322S6;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/TGO",
+					"$(PROJECT_DIR)",
+				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TGO/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -610,6 +621,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = DTR7V322S6;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/TGO",
+					"$(PROJECT_DIR)",
+				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TGO/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

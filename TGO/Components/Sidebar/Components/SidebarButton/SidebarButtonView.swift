@@ -14,12 +14,12 @@ class SidebarButtonView: UIButton {
     
     lazy var image: UIImage = {
         var image: UIImage?
-        if isSystemImage {
+        if isSystemImage, #available(iOS 13, *) {
             image = UIImage(systemName: imageName)
         } else {
             image = UIImage(named: imageName)
         }
-        image = image?.withTintColor(.white, renderingMode: .alwaysTemplate)
+        image = image?.withRenderingMode(.alwaysTemplate)
         return image ?? UIImage()
     }()
     

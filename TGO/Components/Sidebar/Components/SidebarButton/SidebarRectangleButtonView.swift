@@ -48,7 +48,7 @@ class SidebarRectangleButtonView: SidebarButtonView {
     
     func addActiveStyle() {
         DispatchQueue.main.async { [self] in
-            withAnimation(.easeIn) {
+            UIView.animate(withDuration: 0) { [self] in
                 activeLayer = CALayer()
                 activeLayer!.backgroundColor = UIColor(named: "wine-elektra")?.cgColor
                 activeLayer!.frame = CGRect(
@@ -79,7 +79,7 @@ class SidebarRectangleButtonView: SidebarButtonView {
     
     func removeActiveStyle() {
         DispatchQueue.main.async { [self] in
-            withAnimation(.easeIn) {
+            UIView.animate(withDuration: 0) { [self] in
                 backgroundColor = .clear
                 imageView?.tintColor = UIColor(named: "lightGray-elektra")
                 activeLayer?.removeFromSuperlayer()

@@ -15,7 +15,7 @@ class PDVCardWidgetView: UIView {
     }()
     
     lazy var addButton: CircleButtonView = {
-        let addButton = CircleButtonView(frame: .zero, image: .init(systemName: "plus"))
+        let addButton = CircleButtonView(frame: .zero, image: .init(named: "plus"))
         addButton.backgroundColor = UIColor(named: "red-elektra")
         return addButton
     }()

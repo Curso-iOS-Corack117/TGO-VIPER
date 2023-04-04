@@ -21,9 +21,23 @@ class PDVStackWidgetView: UIView {
         return scrollView
     }()
     
-    lazy var header: UIView = {
-        let view = UIView(frame: .zero)
-        return view
+    lazy var header: UIStackView = {
+        let label = UILabel(frame: .zero)
+        label.text = "Puntos de venta"
+        label.font = .systemFont(ofSize: 28)
+        let image = UIImage(named: "order-icon")
+        let imagevw = UIImageView(image: image)
+        let container = UIView(frame: .zero)
+        container.addSubview(imagevw)
+        container.snp.makeConstraints { make in
+            make.height.width.equalTo(40)
+        }
+        imagevw.snp.makeConstraints { make in
+            make.width.height.equalToSuperview().inset(7)
+            make.center.equalToSuperview()
+        }
+        let stack = UIStackView(arrangedSubviews: [label, container])
+        return stack
     }()
     
     private var firstTime = true

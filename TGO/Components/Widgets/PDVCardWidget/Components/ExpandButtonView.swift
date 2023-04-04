@@ -30,7 +30,7 @@ class ExpandButtonView: UIButton {
     }
     
     private func setupView() {
-        var image = UIImage(systemName: "arrow.up.left.and.arrow.down.right")
+        var image = UIImage(named: "arrow.up.left.and.arrow.down.right")
         image = UIImage(cgImage: (image?.cgImage)!, scale: 1, orientation: .left)
         imageView?.tintColor = .black
         imageView?.layer.masksToBounds = false
